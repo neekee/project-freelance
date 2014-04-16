@@ -1,0 +1,19 @@
+.message-table {
+    border: 1px solid #dddddd;
+    background-color: #eeeeee;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+.message-label {
+    font-weight: bold;
+}
+
+.message-sender {
+    color: blue;
+}
+
+.message-subject {
+}
