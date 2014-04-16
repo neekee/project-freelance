@@ -5,6 +5,20 @@
 $(function() {
     // when you click on a message table, it shows the contents of the message.
     $( "table.message-table" ).click(function() {
-        $(this).find( "div.message-content" ).slideToggle( "fast" );
+        var content = $(this).find( "div.message-content" );
+        if (!content.is(":visible"))
+        {
+            content.slideToggle( "fast" );
+            event.stopPropagation();
+        }
+    });
+
+    $( "tr.message-header" ).click(function() {
+        var content = $(this).closest('table').find( "div.message-content" );
+        if (content.is(":visible"))
+        {
+            content.slideToggle( "fast" );
+            event.stopPropagation();
+        }
     });
 });
