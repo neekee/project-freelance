@@ -5,6 +5,6 @@
 $(function() {
     // when you click on a message table, it shows the contents of the message.
     $( "table.message-table" ).click(function() {
-        $(this).find( ".message-content-row" ).show( "slow" );
+        $(this).find( "div.message-content" ).slideToggle( "fast" );
     });
 });
