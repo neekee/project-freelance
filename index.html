@@ -14,6 +14,9 @@
   <!-- Load any supplemental Javascript libraries here -->
   <script type="text/javascript" src="external_js/jquery-1.10.2.js"></script>
   <script type="text/javascript" src="external_js/jquery-ui-1.10.4.js"></script>
+  <script type="text/javascript" src="external_js/expanding.js"></script>
+
+  <!-- Javascript we've written goes here -->
   <script type="text/javascript" src="tabs.js"></script>
   <script type="text/javascript" src="messages.js"></script>
 
@@ -42,22 +45,29 @@
   <div id="tabs-messages">
     <table class="message-table unread">
       <tr class="message-header">
-        <td class="message-icon" rowspan="2"><span class="ui-icon ui-icon-mail-closed"></span></td>
+        <td class="message-icon-td"><span class="message-icon ui-icon ui-icon-mail-closed"></span></td>
         <td class="message-label">From: </td>
         <td class="message-sender">Bob</td>
+        <td class="message-right-padding" rowspan="3"></td>
       </tr>
       <tr class="message-header">
+        <td></td>
         <td class="message-label">Subject: </td>
         <td class="message-subject">New Canvas—Take a Look?</td>
       </tr>
       <tr>
         <td></td>
         <td colspan="2">
-          <div class="message-content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent malesuada arcu dui, eu hendrerit ante
-          mollis sed. Aenean semper, est eu tristique vehicula, dolor lorem fermentum velit, a tempor enim nibh
-          fermentum purus. Nulla est dolor, adipiscing sit amet magna et, malesuada dictum ligula. Aliquam tincidunt
-          porttitor.
+          <div class="message-container">
+            <div class="message-content">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent malesuada arcu dui, eu hendrerit ante
+              mollis sed. Aenean semper, est eu tristique vehicula, dolor lorem fermentum velit, a tempor enim nibh
+              fermentum purus. Nulla est dolor, adipiscing sit amet magna et, malesuada dictum ligula. Aliquam tincidunt
+              porttitor.
+            </div>
+            <div class="message-reply">
+              <textarea class="expanding reply" placeholder="Reply?"></textarea>
+            </div>
           </div>
         </td>
       </tr>
@@ -65,19 +75,26 @@
 
     <table class="message-table">
       <tr class="message-header">
-        <td class="message-icon" rowspan="2"><span class="ui-icon ui-icon-mail-open"></span></td>
+        <td class="message-icon-td"><span class="message-icon ui-icon ui-icon-mail-open"></span></td>
         <td class="message-label">From: </td>
         <td class="message-sender">Fred</td>
+        <td class="message-right-padding" rowspan="3"></td>
       </tr>
       <tr class="message-header">
+        <td></td>
         <td class="message-label">Subject: </td>
-        <td class="message-subject">blah</td>
+        <td class="message-subject">Reply?</td>
       </tr>
       <tr>
         <td></td>
         <td colspan="2">
-          <div class="message-content">
-            Garble garble garble garble garble garble garble garble.
+          <div class="message-container">
+            <div class="message-content">
+              Garble garble garble garble garble garble garble garble.
+            </div>
+            <div class="message-reply">
+              <textarea class="expanding reply" placeholder="Reply?"></textarea>
+            </div>
           </div>
         </td>
       </tr>

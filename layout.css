@@ -22,11 +22,37 @@ td.message-label {
 .message-subject {
 }
 
-td.message-icon {
+td.message-icon-td {
     width: 30px;
 }
 
-.message-content {
+td.message-right-padding {
+    width: 30px;
+}
+
+div.message-container {
     display: none;
     padding-top: 10px;
+}
+
+div.message-content {
+    padding-bottom: 10px;
+}
+
+div.message-reply {
+    width: 100%;
+    padding-right: 400px;
+}
+
+textarea {
+    resize: none;
+}
+
+textarea.reply {
+    padding-left: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    overflow: auto;
 }
