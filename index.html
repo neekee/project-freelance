@@ -15,6 +15,7 @@
   <script type="text/javascript" src="external_js/jquery-1.10.2.js"></script>
   <script type="text/javascript" src="external_js/jquery-ui-1.10.4.js"></script>
   <script type="text/javascript" src="tabs.js"></script>
+  <script type="text/javascript" src="messages.js"></script>
 
 </head>
 
@@ -39,27 +40,36 @@
     <p><a href="">Portrait</a></p>
   </div>
   <div id="tabs-messages">
-    <table class="message-table">
+    <button>hah!</button>
+    <table class="message-table unread">
       <tr>
-        <td rowspan="2"><span class="ui-icon ui-icon-mail-closed"></span></td>
+        <td class="message-icon" rowspan="2"><span class="ui-icon ui-icon-mail-closed"></span></td>
         <td class="message-label">From: </td>
         <td class="message-sender">Bob</td>
       </tr>
       <tr>
         <td class="message-label">Subject: </td>
         <td class="message-subject">New Canvas—Take a Look?</td>
+      </tr>
+      <tr class="message-content-row">
+        <td></td>
+        <td class="message-content" colspan="2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non porta mauris. Quisque lobortis, enim in cursus tempor, est quam.</td>
       </tr>
     </table>
 
     <table class="message-table">
       <tr>
-        <td rowspan="2"><span class="ui-icon ui-icon-mail-closed"></span></td>
+        <td class="message-icon" rowspan="2"><span class="ui-icon ui-icon-mail-open"></span></td>
         <td class="message-label">From: </td>
-        <td class="message-sender">Bob</td>
+        <td class="message-sender">Fred</td>
       </tr>
       <tr>
         <td class="message-label">Subject: </td>
-        <td class="message-subject">New Canvas—Take a Look?</td>
+        <td class="message-subject">blah</td>
+      </tr>
+      <tr class="message-content-row">
+        <td></td>
+        <td class="message-content" colspan="2">Garble garble garble garble garble garble garble garble.</td>
       </tr>
     </table>
 

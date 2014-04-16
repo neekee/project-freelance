@@ -1,14 +1,18 @@
 .message-table {
     border: 1px solid #dddddd;
-    background-color: #eeeeee;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;
     padding: 10px;
 }
 
-.message-label {
+.message-table.unread {
+    background-color: #eeeeee;
+}
+
+td.message-label {
     font-weight: bold;
+    width: 100px;
 }
 
 .message-sender {
@@ -16,4 +20,16 @@
 }
 
 .message-subject {
+}
+
+td.message-icon {
+    width: 30px;
+}
+
+.message-content-row {
+    display: none;
+}
+
+.message-content {
+    padding-top: 10px;
 }
