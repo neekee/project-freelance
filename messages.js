@@ -15,7 +15,7 @@ $(function () {
             });
             // mark read if necessary
             if ($(this).hasClass('unread')) {
-                var icon = $(this).find("span.ui-icon-mail-closed");
+                var icon = $(this).find("td.message-icon-td > span.ui-icon-mail-closed");
                 icon.removeClass("ui-icon-mail-closed");
                 icon.addClass("ui-icon-mail-open");
                 $(this).removeClass('unread');
@@ -33,11 +33,24 @@ $(function () {
     });
 
 
+    $("button.message-send").button({
+        icons: {
+            primary: "ui-icon ui-icon-mail-closed"
+        }
+    });
+
     $("button.message-send-reply").button({
         icons: {
             primary: "ui-icon ui-icon-mail-closed"
         }
     });
+
+    $("button.message-send-reply").click(function () {
+        var icon = $(this).closest("table.message-table").find("span.ui-icon-mail-open");
+        icon.removeClass("ui-icon-mail-open");
+        icon.addClass("ui-icon-arrowreturnthick-1-w");
+    });
+
 
     $("button.message-choose-file").button({
         icons: {

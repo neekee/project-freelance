@@ -50,13 +50,10 @@ textarea {
 }
 
 textarea.reply {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
     overflow: auto;
 }
 
-button.message-choose-file, button.message-send-reply {
+button.message-choose-file, button.message-send-reply, button.message-send {
     float: right;
     margin-left: 0px;
 }
@@ -68,7 +65,14 @@ button.message-choose-file, button.message-send-reply {
 
 input.compose-to, input.compose-subject, textarea.reply {
     padding-left: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     width: 100%;
+}
+
+input.compose-subject {
+    margin-bottom: 4px;
 }
 
 input.input-file {
