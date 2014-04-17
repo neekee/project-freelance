@@ -18,6 +18,7 @@
 
   <!-- Javascript we've written goes here -->
   <script type="text/javascript" src="tabs.js"></script>
+  <script type="text/javascript" src="tasks.js"></script>
   <script type="text/javascript" src="messages.js"></script>
 
 </head>
@@ -36,44 +37,88 @@
     <p><a href="landscape.html">Landscape</a></p>
     <p><a href="portrait.html">Portrait</a></p>
   </div>
-  <div id="tabs-tasks">
-    <table>
-      <tr>
-        <td><span class="ui-icon ui-icon-folder-collapsed"></span></td>
-        <td>General</td>
-      </tr>
-      <tr class="hidden">
-        There are no general tasks.
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td><span class="ui-icon ui-icon-folder-collapsed"></span></td>
-        <td>Fantasy</td>
-      </tr>
-      <tr class="hidden">
-        There are no tasks for this project.
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td><span class="ui-icon ui-icon-folder-collapsed"></span></td>
-        <td>Landscape</td>
-      </tr>
-      <tr class="hidden">
-        There are no tasks for this project.
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td><span class="ui-icon ui-icon-folder-collapsed"></span></td>
-        <td>Portrait</td>
+   <div id="tabs-tasks">
+    <div>
+    <table class="task-table">
+      <tr class="task-header">
+        <td class="message-icon-td"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
+        <td class="task-label">General
       </tr>
       <tr>
-        There are no tasks for this project.
+        <td></td>
+        <td colspan="2">
+          <div class = "task-container">
+            <div class="task-content">
+              <form></form>
+              <input type="text"name="New task"></input>
+              <input type ="button"name="Add" value= "Add"></input>
+            </div>
+          </div>
+        </td>
       </tr>
     </table>
   </div>
+  <div>
+    <table class="task-table">
+      <tr class="task-header">
+        <td class="message-icon-td"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
+        <td class="task-label">Fantasy
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="2">
+          <div class = "task-container">
+            <div class="task-content">
+              <form></form>
+              <input type="text"name="New task"></input>
+              <input type ="button"name="Add" value= "Add"></input>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div><div>
+    <table class="task-table">
+      <tr class="task-header">
+        <td class="message-icon-td"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
+        <td class="task-label">Landscape
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="2">
+          <div class = "task-container">
+            <div class="task-content">
+              <form></form>
+              <input type="text"name="New task"></input>
+              <input type ="button"name="Add" value= "Add"></input>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div><div>
+    <table class="task-table">
+      <tr class="task-header">
+        <td class="message-icon-td"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
+        <td class="task-label">Portrait
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="2">
+          <div class = "task-container">
+            <div class="task-content">
+              <form><input type="checkbox" name="task" value="task1id">Message Bob</input></form>
+              <form><input type="checkbox" name="task" value="task1id">Upload draft</input></form>
+              <input type="text"name="New task"></input>
+              <input type ="button"name="Add" value= "Add"></input>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  </div>
+
   <div id="tabs-messages">
     <table class="message-table compose">
       <tr class="message-header">

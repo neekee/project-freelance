@@ -99,3 +99,17 @@ input.input-file {
     margin-left: .2em;
     border-radius: .2em;
 }
+.task-table {
+    border: 1px solid #dddddd;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+}
+div.task-container {
+    display: none;
+    padding-top: 10px;
+}
+div.task-content {
+    padding-bottom: 10px;
+}
