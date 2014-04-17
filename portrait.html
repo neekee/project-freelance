@@ -32,20 +32,35 @@
     <li><a href="#tabs-messages">Messages</a></li>
   </ul>
   <div id="tabs-projects">
-    <table>
+    <center><div><h1>Project: Portrait<h1></div>
+    <table cellpadding="50px">
       <tr>
         <td>
-        <div id="image">
-          <img src="lod.png" height="200" width="300" border="2px"></img>
-        </div>
+          <div id="image">
+            <img src="lod.png" height="300" width="200" border="2px"></img>
+          </div>
         </td>
         <td>
-        <form>
-          <button>Save canvas</button><br>
-          <button>Load canvas</button>
-        </form>
+          <form>
+            <button id="save-button">Save canvas</button><br>
+            <button id="load-button">Load canvas</button>
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div id="draft-list" width="300" border="2px">
+            <h2>Older drafts</h2>
+            <div>Draft 3</div>
+            <div>Draft 2</div>
+            <div>Draft 1</div>
+          </div>
+        </td>
+        <td>
+          <button id="upload-button"><h1>Upload new draft<h1></button>
         </td>
     </table>
+  </center>
   </div>
   <div id="tabs-tasks">
     <table>
