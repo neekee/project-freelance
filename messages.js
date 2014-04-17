@@ -45,6 +45,22 @@ $(function () {
         }
     });
 
+    $(".input-file").change(function (evt) {
+        var file = this.files[0];
+        if (!file) {
+            return;
+        }
+        $('<span>').text(file.name).append($("<button>").text("Delete Attachment").button({
+            icons: {
+                primary: "ui-icon-trash"
+            },
+            text: false
+        }).click(function (evt) {
+                // Make this undoable
+                $(evt.currentTarget).parent().remove();
+            }).addClass("close-button")).addClass("file-chip").appendTo($(evt.currentTarget).parent().find(".file-list"));
+    });
+
     $(".message-choose-file").click(function () {
         var input = $(this).closest('div.message-reply').find("input.input-file");
         input.trigger('click');
