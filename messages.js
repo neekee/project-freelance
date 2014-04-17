@@ -28,12 +28,10 @@ $(function() {
     });
 
 
-    $( "button" ).button({
-        icons: {
-            primary: "ui-icon-arrowreturnthick-1-w"
-        }
-    });
-
-    $()
+//    $( "button" ).button({
+//        icons: {
+//            primary: "ui-icon-arrowreturnthick-1-w"
+//        }
+//    });
 
 });
