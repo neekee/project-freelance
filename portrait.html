@@ -70,48 +70,121 @@
       </tr>
     </table>
   </div>
+
+
+  
   <div id="tabs-tasks">
-    <table>
-      <tr>
-        <td><span class="ui-icon ui-icon-folder-collapsed"></span></td>
-        <td>General</td>
-      </tr>
-      <tr class="hidden">
-        There are no general tasks.
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td><span class="ui-icon ui-icon-folder-collapsed"></span></td>
-        <td>Fantasy</td>
-      </tr>
-      <tr class="hidden">
-        There are no tasks for this project.
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td><span class="ui-icon ui-icon-folder-collapsed"></span></td>
-        <td>Landscape</td>
-      </tr>
-      <tr class="hidden">
-        There are no tasks for this project.
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td><span class="ui-icon ui-icon-folder-collapsed"></span></td>
-        <td>Portrait</td>
+    <div>
+    <table class="task-table">
+      <tr class="task-header">
+        <td class="message-icon-td"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
+        <td class="task-label">General
       </tr>
       <tr>
-        There are no tasks for this project.
+        <td></td>
+        <td colspan="2">
+          <div class = "task-container">
+            <div class="task-content">
+              <form></form>
+              <input type="text"name="New task"></input>
+              <input type ="button"name="Add" value= "Add"></input>
+            </div>
+          </div>
+        </td>
       </tr>
     </table>
   </div>
+  <div>
+    <table class="task-table">
+      <tr class="task-header">
+        <td class="message-icon-td"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
+        <td class="task-label">Fantasy
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="2">
+          <div class = "task-container">
+            <div class="task-content">
+              <form></form>
+              <input type="text"name="New task"></input>
+              <input type ="button"name="Add" value= "Add"></input>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div><div>
+    <table class="task-table">
+      <tr class="task-header">
+        <td class="message-icon-td"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
+        <td class="task-label">Landscape
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="2">
+          <div class = "task-container">
+            <div class="task-content">
+              <form></form>
+              <input type="text"name="New task"></input>
+              <input type ="button"name="Add" value= "Add"></input>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div><div>
+    <table class="task-table">
+      <tr class="task-header">
+        <td class="message-icon-td"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
+        <td class="task-label">Portrait
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="2">
+          <div class = "task-container">
+            <div class="task-content">
+              <form><input type="checkbox" name="task" value="task1id">Message Bob</input></form>
+              <form><input type="checkbox" name="task" value="task1id">Upload draft</input></form>
+              <input type="text"name="New task"></input>
+              <input type ="button"name="Add" value= "Add"></input>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  </div>
+
+
+
   <div id="tabs-messages">
+    <table class="message-table compose">
+      <tr class="message-header">
+        <td class="message-icon-td"><span class="ui-icon ui-icon-pencil"></span></td>
+        <td class="message-compose-header">Compose new message</td>
+        <td class="message-right-padding" rowspan="2"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <div class="message-container">
+            <div class="message-reply compose">
+              <input type="text" placeholder="To:" class="compose-to">
+              <input type="text" placeholder="Subject:" class="compose-subject">
+              <textarea rows="3" class="expanding compose"></textarea>
+              <input type="file" class="input-file">
+              <button class="message-send">Send</button>
+              <button class="message-choose-file">Choose file...</button>
+              <div class="file-list"></div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
     <table class="message-table unread">
       <tr class="message-header">
-        <td class="message-icon-td"><span class="message-icon ui-icon ui-icon-mail-closed"></span></td>
+        <td class="message-icon-td"><span class="ui-icon ui-icon-mail-closed"></span></td>
         <td class="message-label">From: </td>
         <td class="message-sender">Bob</td>
         <td class="message-right-padding" rowspan="3"></td>
@@ -132,16 +205,21 @@
               porttitor.
             </div>
             <div class="message-reply">
-              <textarea class="expanding reply" placeholder="Reply?"></textarea>
+              <textarea class="expanding reply" placeholder="Reply?" rows="1"></textarea>
+              <input type="file" class="input-file">
+              <button class="message-send-reply">Send Reply</button>
+              <button class="message-choose-file">Choose file...</button>
+              <div class="file-list"></div>
             </div>
           </div>
         </td>
       </tr>
     </table>
 
-    <table class="message-table">
+
+    <table class="message-table unread">
       <tr class="message-header">
-        <td class="message-icon-td"><span class="message-icon ui-icon ui-icon-mail-open"></span></td>
+        <td class="message-icon-td"><span class="ui-icon ui-icon-mail-closed"></span></td>
         <td class="message-label">From: </td>
         <td class="message-sender">Fred</td>
         <td class="message-right-padding" rowspan="3"></td>
@@ -159,7 +237,11 @@
               Garble garble garble garble garble garble garble garble.
             </div>
             <div class="message-reply">
-              <textarea class="expanding reply" placeholder="Reply?"></textarea>
+              <textarea class="expanding reply" placeholder="Reply?" rows="1"></textarea>
+              <input type="file" class="input-file">
+              <button class="message-send-reply">Send Reply</button>
+              <button class="message-choose-file">Choose file...</button>
+              <div class="file-list"></div>
             </div>
           </div>
         </td>
