@@ -57,6 +57,15 @@ textarea.reply {
     overflow: auto;
 }
 
+input.message-choose-file {
+    margin-left: 0px;
+}
+
+button.message-send-reply {
+    float: right;
+    margin-right: 0px;
+}
+
 .hidden {
     display:"none";
 }
