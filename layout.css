@@ -57,7 +57,8 @@ textarea.reply {
     overflow: auto;
 }
 
-input.message-choose-file {
+button.message-choose-file {
+    float: right;
     margin-left: 0px;
 }
 
@@ -69,3 +70,8 @@ button.message-send-reply {
 .hidden {
     display:"none";
 }
+
+input#logo {
+    opacity: 0;
+}
+
