@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <title>Project Freelance</title>
+
+  <!-- Load style sheets -->
+  <link rel="stylesheet" href="external_css/flick/jquery-ui-1.10.4.custom.css">
+  <link rel="stylesheet" type="text/css" href="layout.css"/>
+
+
+  <!-- Load any supplemental Javascript libraries here -->
+  <script type="text/javascript" src="external_js/jquery-1.10.2.js"></script>
+  <script type="text/javascript" src="external_js/jquery-ui-1.10.4.js"></script>
+  <script type="text/javascript" src="external_js/expanding.js"></script>
+
+  <!-- Javascript we've written goes here -->
+  <script type="text/javascript" src="tabs.js"></script>
+  <script type="text/javascript" src="messages.js"></script>
+
+</head>
+
+<body>
+
+
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-projects">Projects</a></li>
+    <li><a href="#tabs-tasks">Tasks</a></li>
+    <li><a href="#tabs-messages">Messages</a></li>
+  </ul>
+  <div id="tabs-projects">
+    <table>
+      <tr>
+        <td>
+        <div id="image">
+          <img src="lod.png" height="200" width="300" border="2px"></img>
+        </div>
+        </td>
+        <td>
+        <form>
+          <button>Save canvas</button><br>
+          <button>Load canvas</button>
+        </form>
+        </td>
+    </table>
+  </div>
+  <div id="tabs-tasks">
+    <table>
+      <tr>
+        <td><span class="ui-icon ui-icon-folder-collapsed"></span></td>
+        <td>General</td>
+      </tr>
+      <tr class="hidden">
+        There are no general tasks.
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td><span class="ui-icon ui-icon-folder-collapsed"></span></td>
+        <td>Fantasy</td>
+      </tr>
+      <tr class="hidden">
+        There are no tasks for this project.
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td><span class="ui-icon ui-icon-folder-collapsed"></span></td>
+        <td>Landscape</td>
+      </tr>
+      <tr class="hidden">
+        There are no tasks for this project.
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td><span class="ui-icon ui-icon-folder-collapsed"></span></td>
+        <td>Portrait</td>
+      </tr>
+      <tr>
+        There are no tasks for this project.
+      </tr>
+    </table>
+  </div>
+  <div id="tabs-messages">
+    <table class="message-table unread">
+      <tr class="message-header">
+        <td class="message-icon-td"><span class="message-icon ui-icon ui-icon-mail-closed"></span></td>
+        <td class="message-label">From: </td>
+        <td class="message-sender">Bob</td>
+        <td class="message-right-padding" rowspan="3"></td>
+      </tr>
+      <tr class="message-header">
+        <td></td>
+        <td class="message-label">Subject: </td>
+        <td class="message-subject">New canvas—take a look?</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="2">
+          <div class="message-container">
+            <div class="message-content">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent malesuada arcu dui, eu hendrerit ante
+              mollis sed. Aenean semper, est eu tristique vehicula, dolor lorem fermentum velit, a tempor enim nibh
+              fermentum purus. Nulla est dolor, adipiscing sit amet magna et, malesuada dictum ligula. Aliquam tincidunt
+              porttitor.
+            </div>
+            <div class="message-reply">
+              <textarea class="expanding reply" placeholder="Reply?"></textarea>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <table class="message-table">
+      <tr class="message-header">
+        <td class="message-icon-td"><span class="message-icon ui-icon ui-icon-mail-open"></span></td>
+        <td class="message-label">From: </td>
+        <td class="message-sender">Fred</td>
+        <td class="message-right-padding" rowspan="3"></td>
+      </tr>
+      <tr class="message-header">
+        <td></td>
+        <td class="message-label">Subject: </td>
+        <td class="message-subject">Great job on the new draft!</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="2">
+          <div class="message-container">
+            <div class="message-content">
+              Garble garble garble garble garble garble garble garble.
+            </div>
+            <div class="message-reply">
+              <textarea class="expanding reply" placeholder="Reply?"></textarea>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+
+  </div>
+</div>
+
+</body>
