@@ -1,4 +1,4 @@
-$(function() {
+/**$(function() {
     $( "#tabs" ).tabs();
 
     var toggle = function (class_name) {
@@ -8,7 +8,7 @@ $(function() {
         $(class_name.id + "-body").style = "display:none";
       }
       else {
-      	$(class_name.id + "-body").style = "display:block";
+        $(class_name.id + "-body").style = "display:block";
       };
     };
 
@@ -17,4 +17,28 @@ $(function() {
     $("#project-fantasy").click(toggle);
     $("#project-portrait").click(toggle);
     $("#project-landscape").click(toggle);
+});**/
+
+
+$(function() {
+    // when you click on a task table, it displays the tasks.
+
+     $( "table.message-table" ).click(function() {
+        var content = $(this).find( "div.task-container" );
+            event.stopPropagation();
+            content.slideToggle( "fast");
+    });
+
+    $( "tr.task-header" ).click(function() {
+        var content = $(this).closest('table').find( "div.task-container" );
+          content.slideToggle( "fast" );
+          event.stopPropagation();
+    });
+
+
+    $("#select_logo").click(function(){
+        $("#logo").trigger('click');
+        return false;
+    });
+
 });

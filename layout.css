@@ -1,4 +1,5 @@
-.message-table {
+table.message-table {
+    background-color: #ffffff;
     border: 1px solid #dddddd;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -6,7 +7,11 @@
     padding: 10px;
 }
 
-.message-table.unread {
+table.message-table.unread {
+    font-weight: bold;
+}
+
+table.message-table.unread, table.message-table.compose {
     background-color: #eeeeee;
 }
 
@@ -17,9 +22,6 @@ td.message-label {
 
 .message-sender {
     color: #0073ea;
-}
-
-.message-subject {
 }
 
 td.message-icon-td {
@@ -41,7 +43,6 @@ div.message-content {
 
 div.message-reply {
     width: 100%;
-    padding-right: 400px;
 }
 
 textarea {
@@ -49,15 +50,10 @@ textarea {
 }
 
 textarea.reply {
-    padding-left: 5px;
-    width: 100%;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
     overflow: auto;
 }
 
-button.message-choose-file, button.message-send-reply {
+button.message-choose-file, button.message-send-reply, button.message-send {
     float: right;
     margin-left: 0px;
 }
@@ -66,6 +62,54 @@ button.message-choose-file, button.message-send-reply {
     display: none;
 }
 
+
+input.compose-to, input.compose-subject, textarea.reply {
+    padding-left: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 100%;
+}
+
+input.compose-subject {
+    margin-bottom: 4px;
+}
+
 input.input-file {
     opacity: 0;
+}
+
+.file-list {
+    float: right;
+    display: inline-block;
+    margin: 0 10px 0 10px;
+}
+
+.file-list .close-button {
+    font-size: 10px;
+    margin-left: 4px;
+}
+
+.file-list .file-chip {
+    border-width: 1px;
+    border-style: dotted;
+    padding: .4em 1em .4em .8em;
+    display: inline-block;
+    margin-top: .1em;
+    margin-left: .2em;
+    border-radius: .2em;
+}
+.task-table {
+    border: 1px solid #dddddd;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+}
+div.task-container {
+    display: none;
+    padding-top: 10px;
+}
+div.task-content {
+    padding-bottom: 10px;
 }
