@@ -28,10 +28,21 @@ $(function() {
     });
 
 
-//    $( "button" ).button({
-//        icons: {
-//            primary: "ui-icon-arrowreturnthick-1-w"
-//        }
-//    });
+    $( "button.message-send-reply" ).button({
+        icons: {
+            primary: "ui-icon ui-icon-mail-closed"
+        }
+    });
+
+    $( "button.message-choose-file" ).button({
+        icons: {
+            primary: "ui-icon ui-icon-mail-closed"
+        }
+    });
+
+    $("#select_logo").click(function(){
+        $("#logo").trigger('click');
+        return false;
+    });
 
 });
