@@ -21,7 +21,6 @@ td.message-label {
 }
 
 .message-sender {
-    color: #0073ea;
 }
 
 td.message-icon-td {
@@ -112,4 +111,9 @@ div.task-container {
 }
 div.task-content {
     padding-bottom: 10px;
+}
+
+input.tasks-add-field, input.compose-to, input.compose-subject {
+    background-color: white !important;
+    background-image: none !important;
 }
