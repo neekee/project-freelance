@@ -4,25 +4,37 @@
 
 $(function () {
     // when you click on a message table, it shows the contents of the message.
-    $("table.message-table").click(function () {
-        var content = $(this).find("div.message-container");
-        if (!content.is(":visible")) {
-            content.slideToggle("fast", function () {
-                var textarea = content.find("textarea.expanding");
-                if (!textarea.expanding('active')) {
-                    textarea.expanding();
-                }
-            });
-            // mark read if necessary
-            if ($(this).hasClass('unread')) {
-                var icon = $(this).find("td.message-icon-td > span.ui-icon-mail-closed");
-                icon.removeClass("ui-icon-mail-closed");
-                icon.addClass("ui-icon-mail-open");
-                $(this).removeClass('unread');
+
+    $("table.message-table")
+        .hover(function () {
+            var content = $(this).find("div.message-container");
+            if (!content.is(":visible")) {
+                $(this).css('cursor', 'pointer');
             }
-            event.stopPropagation();
-        }
-    });
+            else {
+                $(this).css('cursor', 'auto')
+            }
+        })
+        .click(function () {
+            var content = $(this).find("div.message-container");
+            if (!content.is(":visible")) {
+                content.slideToggle("fast", function () {
+                    var textarea = content.find("textarea.expanding");
+                    if (!textarea.expanding('active')) {
+                        textarea.expanding();
+                    }
+                });
+                // mark read if necessary
+                if ($(this).hasClass('unread')) {
+                    var icon = $(this).find("td.message-icon-td > span.ui-icon-mail-closed");
+                    icon.removeClass("ui-icon-mail-closed");
+                    icon.addClass("ui-icon-mail-open");
+                    $(this).removeClass('unread');
+                }
+                $(this).css('cursor', 'auto')
+                event.stopPropagation();
+            }
+        });
 
     $("tr.message-header").click(function () {
         var content = $(this).closest('table').find("div.message-container");
