@@ -13,6 +13,7 @@ table.message-table.unread {
 
 table.message-table.unread, table.message-table.compose {
     background-color: #eeeeee;
+    cursor: pointer;
 }
 
 td.message-label {

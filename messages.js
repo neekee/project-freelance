@@ -6,15 +6,6 @@ $(function () {
     // when you click on a message table, it shows the contents of the message.
 
     $("table.message-table")
-        .hover(function () {
-            var content = $(this).find("div.message-container");
-            if (!content.is(":visible")) {
-                $(this).css('cursor', 'pointer');
-            }
-            else {
-                $(this).css('cursor', 'auto')
-            }
-        })
         .click(function () {
             var content = $(this).find("div.message-container");
             if (!content.is(":visible")) {
@@ -39,6 +30,8 @@ $(function () {
     $("tr.message-header").click(function () {
         var content = $(this).closest('table').find("div.message-container");
         if (content.is(":visible")) {
+            var table = $(this).closest('table.message-table');
+            table.css('cursor', 'pointer');
             content.slideToggle("fast");
             event.stopPropagation();
         }
