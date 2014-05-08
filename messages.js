@@ -16,17 +16,22 @@ $(function () {
         .click(function () {
             var content = $(this).find("div.message-container");
             if (!content.is(":visible")) {
+                // slide out the message content
                 content.slideToggle("fast", function () {
                     var textarea = content.find("textarea.expanding");
                     if (!textarea.expanding('active')) {
                         textarea.expanding();
                     }
                 });
+                // change the expand icon to collapse
+                var icon = $(this).find("td.message-right-padding > span.ui-icon");
+                icon.addClass("ui-icon-carat-1-n");
+                icon.removeClass("ui-icon-carat-1-s");
                 // mark read if necessary
                 if ($(this).hasClass('unread')) {
-                    var icon = $(this).find("td.message-icon-td > span.ui-icon-mail-closed");
-                    icon.removeClass("ui-icon-mail-closed");
+                    icon = $(this).find("td.message-icon-td > span.ui-icon-mail-closed");
                     icon.addClass("ui-icon-mail-open");
+                    icon.removeClass("ui-icon-mail-closed");
                     $(this).removeClass('unread');
                 }
                 $(this).css('cursor', 'auto');
@@ -40,6 +45,9 @@ $(function () {
             var table = $(this).closest('table.message-table');
             table.css('cursor', 'pointer');
             content.slideToggle("fast");
+            var icon = $(this).find("td.message-right-padding > span.ui-icon");
+            icon.addClass("ui-icon-carat-1-s");
+            icon.removeClass("ui-icon-carat-1-n");
             event.stopPropagation();
         }
     });
