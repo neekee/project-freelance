@@ -78,6 +78,18 @@ input.compose-subject {
     margin-bottom: 4px;
 }
 
+span.message-timestamp {
+    float: right;
+    color: #777777;
+    font-weight: normal;
+    font-size: .8em;
+}
+
+span.message-timestamp-separator {
+    font-size: .75em;
+    vertical-align: top;
+}
+
 /***************/
 /* File upload */
 /***************/

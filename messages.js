@@ -59,14 +59,19 @@ $(function () {
         }
     });
 
+    // send a reply
     $("button.message-send-reply").button({
         icons: {
             primary: "ui-icon ui-icon-mail-closed"
         }
+
     }).click(function () {
         var icon = $(this).closest("table.message-table").find("span.ui-icon-mail-open");
         icon.removeClass("ui-icon-mail-open");
         icon.addClass("ui-icon-arrowreturnthick-1-w");
+        var date = new Date();
+        var month = date.getMonth()+1;
+        console.log(date.getHours() + ":" + date.getMinutes() + " " + month + "/" + date.getDate() + "/" + date.getFullYear());
     });
 
 
