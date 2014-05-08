@@ -3,8 +3,15 @@
  */
 
 $(function () {
-    // when you click on a message table, it shows the contents of the message.
+    var sendNewMessage = function() {
 
+    };
+
+    // creates a reply
+    var createReply = function(to, body) {
+    };
+
+    // when you click on a message table, it shows the contents of the message.
     $("table.message-table")
         .click(function () {
             var content = $(this).find("div.message-container");
@@ -22,7 +29,7 @@ $(function () {
                     icon.addClass("ui-icon-mail-open");
                     $(this).removeClass('unread');
                 }
-                $(this).css('cursor', 'auto')
+                $(this).css('cursor', 'auto');
                 event.stopPropagation();
             }
         });
@@ -48,9 +55,7 @@ $(function () {
         icons: {
             primary: "ui-icon ui-icon-mail-closed"
         }
-    });
-
-    $("button.message-send-reply").click(function () {
+    }).click(function () {
         var icon = $(this).closest("table.message-table").find("span.ui-icon-mail-open");
         icon.removeClass("ui-icon-mail-open");
         icon.addClass("ui-icon-arrowreturnthick-1-w");

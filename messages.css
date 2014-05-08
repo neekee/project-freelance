@@ -1,0 +1,105 @@
+table.message-table {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+}
+
+table.message-table.unread {
+    font-weight: bold;
+}
+
+table.message-table.unread, table.message-table.compose {
+    background-color: #eeeeee;
+    cursor: pointer;
+}
+
+td.message-label {
+    font-weight: bold;
+    width: 100px;
+}
+
+td.message-icon-td, td.message-right-padding {
+    width: 30px;
+}
+
+/* top-align the expand/collapse icon */
+td.message-right-padding {
+    vertical-align: top;
+}
+
+/* right-align the expand/collapse icon */
+td.message-right-padding span {
+    float: right;
+}
+
+div.message-container {
+    display: none;
+    padding-top: 10px;
+}
+
+div.message-content {
+    padding-bottom: 10px;
+}
+
+div.message-reply {
+    width: 100%;
+}
+
+textarea.reply {
+    overflow: auto;
+}
+
+/* buttons with icons */
+button.message-choose-file, button.message-send-reply, button.message-send {
+    float: right;
+    margin-left: 0;
+}
+
+input.compose-to, input.compose-subject, textarea.reply {
+    padding-left: 5px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 100%;
+}
+
+td.message-compose-header {
+    font-weight: bold;
+}
+
+input.compose-subject {
+    margin-bottom: 4px;
+}
+
+/***************/
+/* File upload */
+/***************/
+
+input.input-file {
+    opacity: 0;
+}
+
+div.file-list {
+    float: right;
+    display: inline-block;
+    margin: 0 10px 0 10px;
+}
+
+.file-list .close-button {
+    font-size: 10px;
+    margin-left: 4px;
+}
+
+.file-list .file-chip {
+    border-width: 1px;
+    border-style: dotted;
+    padding: .4em 1em .4em .8em;
+    display: inline-block;
+    margin-top: .1em;
+    margin-left: .2em;
+    border-radius: .2em;
+}
+

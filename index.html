@@ -9,6 +9,7 @@
   <!-- Load style sheets -->
   <link rel="stylesheet" href="external_css/flick/jquery-ui-1.10.4.custom.css">
   <link rel="stylesheet" type="text/css" href="layout.css"/>
+  <link rel="stylesheet" type="text/css" href="messages.css"/>
 
 
   <!-- Load any supplemental Javascript libraries here -->
@@ -153,12 +154,13 @@
         <td class="message-icon-td"><span class="ui-icon ui-icon-mail-closed"></span></td>
         <td class="message-label">From:</td>
         <td class="message-sender">Bob</td>
-        <td class="message-right-padding" rowspan="3"></td>
+        <td class="message-right-padding"><span class="ui-icon ui-icon-carat-1-s"></span></td>
       </tr>
       <tr class="message-header">
         <td></td>
         <td class="message-label">Subject:</td>
         <td class="message-subject">New overlay—take a look?</td>
+        <td class="message-right-padding" rowspan="2"></td>
       </tr>
       <tr>
         <td></td>
@@ -173,7 +175,7 @@
             <div class="message-reply">
               <textarea class="expanding reply" placeholder="Reply?" rows="1"></textarea>
               <input type="file" class="input-file">
-              <button class="message-send-reply">Send Reply</button>
+              <button class="message-send-reply">Send</button>
               <button class="message-choose-file">Choose file...</button>
               <div class="file-list"></div>
             </div>
@@ -204,7 +206,7 @@
             <div class="message-reply">
               <textarea class="expanding reply" placeholder="Reply?" rows="1"></textarea>
               <input type="file" class="input-file">
-              <button class="message-send-reply">Send Reply</button>
+              <button class="message-send-reply">Send</button>
               <button class="message-choose-file">Choose file...</button>
               <div class="file-list"></div>
             </div>
