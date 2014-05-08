@@ -3,19 +3,34 @@
  */
 
 $(function () {
-    var sendNewMessage = function() {
+    /**
+     * Sends a new message.
+     * @param recipient String
+     * @param subject String
+     * @param content String
+     * @param isReply boolean
+     */
+    var sendNewMessage = function(recipient, subject, content, isReply) {
+        // add to the top
+        // already read
 
+        if (isReply) {
+
+        }
     };
 
     // creates a reply
     var createReply = function(to, body) {
     };
 
+    $("table.message-table textarea").addClass("ui-corner-all");
+
     // when you click on a message table, it shows the contents of the message.
     $("table.message-table")
         .click(function () {
             var content = $(this).find("div.message-container");
             if (!content.is(":visible")) {
+                $(this).removeClass("closed");
                 // slide out the message content
                 content.slideToggle("fast", function () {
                     var textarea = content.find("textarea.expanding");
@@ -29,25 +44,25 @@ $(function () {
                 icon.removeClass("ui-icon-carat-1-s");
                 // mark read if necessary
                 if ($(this).hasClass('unread')) {
+                    icon.addClass("blue-icon");
                     icon = $(this).find("td.message-icon-td > span.ui-icon-mail-closed");
                     icon.addClass("ui-icon-mail-open");
                     icon.removeClass("ui-icon-mail-closed");
                     $(this).removeClass('unread');
                 }
-                $(this).css('cursor', 'auto');
                 event.stopPropagation();
             }
         });
 
     $("tr.message-header").click(function () {
-        var content = $(this).closest('table').find("div.message-container");
+        var table = $(this).closest('table');
+        var content = table.find("div.message-container");
         if (content.is(":visible")) {
-            var table = $(this).closest('table.message-table');
-            table.css('cursor', 'pointer');
             content.slideToggle("fast");
             var icon = $(this).find("td.message-right-padding > span.ui-icon");
             icon.addClass("ui-icon-carat-1-s");
             icon.removeClass("ui-icon-carat-1-n");
+            table.addClass("closed");
             event.stopPropagation();
         }
     });
@@ -69,9 +84,11 @@ $(function () {
         var icon = $(this).closest("table.message-table").find("span.ui-icon-mail-open");
         icon.removeClass("ui-icon-mail-open");
         icon.addClass("ui-icon-arrowreturnthick-1-w");
-        var date = new Date();
-        var month = date.getMonth()+1;
-        console.log(date.getHours() + ":" + date.getMinutes() + " " + month + "/" + date.getDate() + "/" + date.getFullYear());
+        var now = new Date();
+        var month = now.getMonth()+1;
+        var time = now.getHours() + ":" + now.getMinutes();
+        var date = month + "/" + now.getDate() + "/" + now.getFullYear();
+        console.log(time + " @ " + date);
     });
 
 

@@ -1,10 +1,15 @@
 table.message-table {
     background-color: #ffffff;
-    border: 1px solid #dddddd;
+    border: 1px solid #cccccc;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;
     padding: 10px;
+}
+
+table.message-table.closed {
+    background-color: #eeeeee;
+    cursor: pointer;
 }
 
 table.message-table.unread {
@@ -14,6 +19,10 @@ table.message-table.unread {
 table.message-table.unread, table.message-table.compose {
     background-color: #eeeeee;
     cursor: pointer;
+}
+
+table.message-table span.ui-icon-mail-open, .blue-icon {
+    background-image: url("external_css/flick/images/ui-icons_0073ea_256x240.png") !important;
 }
 
 td.message-label {
@@ -48,6 +57,10 @@ div.message-reply {
     width: 100%;
 }
 
+textarea {
+    border: 1px solid #dddddd;
+}
+
 textarea.reply {
     overflow: auto;
 }
@@ -62,7 +75,7 @@ button.message-send, button.message-send-reply {
     margin-right: 0;
 }
 
-input.compose-to, input.compose-subject, textarea.reply {
+input.compose-to, input.compose-subject, textarea.reply, textarea.compose {
     padding-left: 5px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
