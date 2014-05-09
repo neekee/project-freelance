@@ -49,36 +49,16 @@ function addFolder() {
         .append($("<tr>")
             .append($("<td>"))
             .append($("<td>").attr("colspan", 2))
-                .append($("<div>").addClass("message-container")
-                        .append($("<div>").addClass("message-content"))
+                .append($("<div>").addClass("task-container")
+                        .append($("<div>").addClass("task-content"))
                         .append($("<input>").attr("type","text").addClass("tasks-add-field"))
                         .append($("<button>").addClass("tasks-add-button").text("Add task"))
                 )
         )
-    $(".task-table").after(table);
+    $(".main-task").after(table);
     addExpandListener(table);
     buttonifyChildren(table);
 }
-
-function addExpandListener(someElement) {
-    someElement.click(function (evt) {
-        var content = $(this).find( "div.task-container" );
-        var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
-        icon.addClass("ui-icon-carat-1-n");
-        icon.removeClass("ui-icon-carat-1-s");
-        content.slideToggle( "fast" );
-        event.stopPropagation();
-});
-}
-
-function buttonifyChildren (someParent) {
-        someParent.find("input[type=submit], input[type=button], button")
-            .click(function( event ) {
-                event.preventDefault();
-            })
-            .bind('mouseup', function() {
-                $(this).blur()});
-    }
 
 /**
 <table class="task-table">
@@ -104,6 +84,34 @@ function buttonifyChildren (someParent) {
     </div>
 
     **/
+
+
+function addExpandListener(someElement) {
+    someElement.click(function (evt) {
+        var content = $(this).closest('table').find( "div.task-container" );
+        var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
+        if (!content.is(":visible")) {
+            icon.addClass("ui-icon-carat-1-n");
+            icon.removeClass("ui-icon-carat-1-s");
+        }
+        else {
+            icon.addClass("ui-icon-carat-1-s");
+            icon.removeClass("ui-icon-carat-1-n");
+        }
+        content.slideToggle( "fast" );
+        event.stopPropagation();
+});
+}
+
+function buttonifyChildren (someParent) {
+        someParent.find("input[type=submit], input[type=button], button")
+            .click(function( event ) {
+                event.preventDefault();
+            })
+            .bind('mouseup', function() {
+                $(this).blur()});
+    }
+
 
  // following code adapted from http://viralpatel.net/blogs/dynamically-add-remove-rows-in-html-table-using-javascript/
 
