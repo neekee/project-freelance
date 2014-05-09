@@ -40,13 +40,15 @@
 
     <p><a class="project" href="portrait.html">Portrait</a></p>
     <input type="text" id="newprojectname" name="New Project" class="project-add-field">
-    <input type="button" id="AddProject" name="+" value="Add New Project" class="project-add-button" onclick="addProject('newprojectname')">
+    <input type="button" id="AddProject" name="+" value="Add New Project" class="project-add-button"
+           onclick="addProject('newprojectname')">
   </div>
 
   <div id="tabs-tasks">
     <input type="text" id="newfoldername" name="newfoldername" class="tasks-add-field">
-    <input type="button" id="newfolder" name="newfolder" value="Add folder" class="tasks-add-button"onclick ="addFolder()">
-    <div id = "main-task">
+    <input type="button" id="newfolder" name="newfolder" value="Add folder" class="tasks-add-button">
+
+    <div id="main-task">
       <table class="task-table">
         <tr class="task-header">
           <td class="message-icon-read"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
@@ -58,7 +60,8 @@
             <div class="task-container">
               <div class="task-content">
                 <input type="text" id="generaltext" name="New task" class="tasks-add-field">
-                <input type="button" id="AddGeneral" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('General','generaltext')">
+                <input type="button" id="AddGeneral" name="Add" value="Add" class="tasks-add-button"
+                       onclick="addTask('General','generaltext')">
                 <br>
                 <table id="General" class="task-table">
                 </table>
@@ -79,7 +82,8 @@
             <div class="task-container">
               <div class="task-content">
                 <input type="text" id="fantasytext" name="New task" class="tasks-add-field">
-                <input type="button" id="AddFantasy" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('Fantasy','fantasytext')">
+                <input type="button" id="AddFantasy" name="Add" value="Add" class="tasks-add-button"
+                       onclick="addTask('Fantasy','fantasytext')">
                 <br>
                 <table id="Fantasy" class="task-table">
                 </table>
@@ -100,7 +104,8 @@
             <div class="task-container">
               <div class="task-content">
                 <input type="text" id="landscapetext" name="New task" class="tasks-add-field">
-                <input type="button" id="AddLandscape" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('Landscape','landscapetext')">
+                <input type="button" id="AddLandscape" name="Add" value="Add" class="tasks-add-button"
+                       onclick="addTask('Landscape','landscapetext')">
                 <br>
                 <table id="Landscape" class="task-table">
                 </table>
@@ -121,8 +126,9 @@
             <div class="task-container">
               <div class="task-content">
                 <input type="text" id="portraittext" name="New task" class="tasks-add-field">
-                 <input type="button" id="AddPortrait" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('Portrait','portraittext')">
-                 <br>
+                <input type="button" id="AddPortrait" name="Add" value="Add" class="tasks-add-button"
+                       onclick="addTask('Portrait','portraittext')">
+                <br>
                 <table id="Portrait" class="task-table">
                 </table>
                 <!--
@@ -130,13 +136,13 @@
                 <br>
                 <tr><form><input type="checkbox" name="task" value="task1id">Upload draft</form></tr>
                 <br>-->
-               </div>
+              </div>
             </div>
           </td>
         </tr>
       </table>
+    </div>
   </div>
-</div>
 
   <div id="tabs-messages">
     <!-- static compose message area -->
