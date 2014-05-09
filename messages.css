@@ -16,7 +16,7 @@ table.message-table.unread {
     font-weight: bold;
 }
 
-table.message-table.unread, table.message-table.compose {
+table.message-table.unread, table.message-table.compose.closed {
     background-color: #eeeeee;
     cursor: pointer;
 }
@@ -59,6 +59,8 @@ div.message-reply {
 
 textarea {
     border: 1px solid #dddddd;
+    padding-top: 7px;
+    padding-bottom: 7px;
 }
 
 textarea.reply {
