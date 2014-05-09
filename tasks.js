@@ -35,7 +35,7 @@ $(function () {
                         .append($("<div>").addClass("task-container")
                             .append($("<div>").addClass("task-content")
                                 .append($("<input>").attr("type", "text").addClass("tasks-add-field"))
-                                .append($("<button>").addClass("tasks-add-button").text("Add"))
+                                .append($("<input>").attr("type", "button").addClass("tasks-add-button").attr("value","Add"))
                                 .append("<br>")
                                 .append($("<table>").addClass("task-table").attr("id", folderName)))
                             )));
@@ -57,8 +57,8 @@ $(function () {
                 icon.addClass("ui-icon-carat-1-n");
                 icon.removeClass("ui-icon-carat-1-s");
                 content.slideToggle("fast");
+                event.stopPropagation();
             }
-            event.stopPropagation();
         });
     }
 
@@ -115,22 +115,6 @@ $(function () {
             borderBottomColor: original_color }, 'normal');
     };
 
-    var addTask = function (tableID, textboxID) {
-        var textBox = $("#"+textboxID);
-        var text = textBox.val();
-        if (text.length === 0) {
-            flashBorder(textBox);
-        }
-        else {
-            textBox.val("");
-            var table = document.getElementById(tableID);
-            var rowCount = table.rows.length;
-            var row = table.insertRow(rowCount);
-            var newcell = row.insertCell(0);
-            var string = '<input type="checkbox" name="task" value="task1id">' + text + '</form>';
-            newcell.innerHTML = string;
-        }
-    }
 
     function deleteRow(tableID) {
         try {
@@ -157,10 +141,10 @@ $(function () {
 
     /** define what happens when the element that matches the selector is clicked */
     $("input#newfolder").click(addFolder);
-    $("input#AddGeneral").click(function() {addTask('General','generaltext');});
-    $("input#AddFantasy").click(function() {addTask('Fantasy','fantasytext');});
-    $("input#AddLandscape").click(function() {addTask('Landscape','landscapetext');});
-    $("input#AddPortrait").click(function() {addTask('Portrait','portraittext');});
+//    $("input#AddGeneral").click(function() {addTask('General','generaltext');});
+//    $("input#AddFantasy").click(function() {addTask('Fantasy','fantasytext');});
+//    $("input#AddLandscape").click(function() {addTask('Landscape','landscapetext');});
+//    $("input#AddPortrait").click(function() {addTask('Portrait','portraittext');});
 
     $("tr.task-header").click(function () {
         var content = $(this).closest('table').find("div.task-container");
@@ -181,6 +165,28 @@ $(function () {
     $("#select_logo").click(function () {
         $("#logo").trigger('click');
         return false;
+    });
+
+
+
+    var task_tab = $("#tabs-tasks");
+    /** add task */
+    task_tab.on("click", ".tasks-add-button", function() {
+        console.log("yeah")
+        var div = $(this).closest("div")
+        var textInput = div.find(".tasks-add-field");
+        var text = textInput.val();
+        if (text.length === 0) {
+            flashBorder(textInput);
+        }
+        else {
+            var putTasksHere = div.find(".task-table");
+            putTasksHere
+                .append($("<tr>")
+                    .append($("<td>")
+                        .append($("<input>").attr("type","checkbox"))
+                        .append(" " + text)));
+        }
     });
 
 
