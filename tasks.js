@@ -27,11 +27,11 @@ $(function () {
                         .append($("<span>").addClass("ui-icon").addClass("ui-icon ui-icon-folder-collapsed")))
                     .append($("<td>").addClass("task-label")
                         .text(folderName))
-                    .append($("<td>").addClass("message-icon-toggle").attr("rowspan", 3)
+                    .append($("<td>").addClass("message-icon-toggle").attr("rowspan", "3")
                         .append($("<span>").addClass("ui-icon ui-icon-carat-1-s"))))
                 .append($("<tr>")
                     .append($("<td>"))
-                    .append($("<td>").attr("colspan", 2))
+                    .append($("<td>").attr("colspan", "2"))
                     .append($("<div>").addClass("task-container")
                         .append($("<div>").addClass("task-content")
                             .append($("<input>").attr("type", "text").addClass("tasks-add-field"))
@@ -92,15 +92,16 @@ $(function () {
         var text = textBox.val();
         if (text.length === 0) {
             flashBorder(textBox);
-            return;
         }
-        var table = document.getElementById(tableID);
-        var rowCount = table.rows.length;
-        var row = table.insertRow(rowCount);
-        var newcell = row.insertCell(0);
-        var string = '<input type="checkbox" name="task" value="task1id">' + text + '</form>';
-        newcell.innerHTML = string;
-        textBox.value = "";
+        else {
+            textBox.val("");
+            var table = document.getElementById(tableID);
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+            var newcell = row.insertCell(0);
+            var string = '<input type="checkbox" name="task" value="task1id">' + text + '</form>';
+            newcell.innerHTML = string;
+        }
     }
 
     function deleteRow(tableID) {
