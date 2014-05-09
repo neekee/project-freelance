@@ -18,4 +18,39 @@ $(function() {
         $("#logo").trigger('click');
         return false;
     });
+
+
 });
+
+ // following code adapted from http://viralpatel.net/blogs/dynamically-add-remove-rows-in-html-table-using-javascript/
+
+function addTask(tableID) {
+    var table = document.getElementById(tableID);
+    var rowCount = table.rows.length;
+    var row = table.insertRow(rowCount);
+    var newcell = row.insertCell(0);
+    newcell.innerHTML = '<form><input type="checkbox" name="task" value="task1id">Message Bob</form>'
+}
+    function deleteRow(tableID) {
+            try {
+            var table = document.getElementById(tableID);
+            var rowCount = table.rows.length;
+ 
+            for(var i=0; i<rowCount; i++) {
+                var row = table.rows[i];
+                var chkbox = row.cells[0].childNodes[0];
+                if(null != chkbox && true == chkbox.checked) {
+                    if(rowCount <= 1) {
+                        alert("Cannot delete all the rows.");
+                        break;
+                    }
+                    table.deleteRow(i);
+                    rowCount--;
+                    i--;
+                }
+            }
+            }catch(e) {
+                alert(e);
+            }
+        }
+
