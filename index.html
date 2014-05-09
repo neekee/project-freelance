@@ -53,9 +53,11 @@
           <td colspan="2">
             <div class="task-container">
               <div class="task-content">
-                <form></form>
-                <input type="text" name="New task" class="tasks-add-field">
-                <input type="button" id="AddGeneral" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('General')">
+                <input type="text" id="generaltext" name="New task" class="tasks-add-field">
+                <input type="button" id="AddGeneral" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('General','generaltext')">
+                <br>
+                <table id="General" class="task-table">
+                </table>
               </div>
             </div>
           </td>
@@ -63,7 +65,7 @@
       </table>
     </div>
     <div>
-      <table id="Fantasy" class="task-table">
+      <table class="task-table">
         <tr class="task-header">
           <td class="message-icon-read"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
           <td class="task-label">Fantasy
@@ -73,9 +75,11 @@
           <td colspan="2">
             <div class="task-container">
               <div class="task-content">
-                <form></form>
-                <input type="text" name="New task" class="tasks-add-field">
-                <input type="button" id="AddFantasy" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('Fantasy')">
+                <input type="text" id="fantasytext" name="New task" class="tasks-add-field">
+                <input type="button" id="AddFantasy" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('Fantasy','fantasytext')">
+                <br>
+                <table id="Fantasy" class="task-table">
+                </table>
               </div>
             </div>
           </td>
@@ -84,7 +88,7 @@
 
     </div>
     <div>
-      <table id="Landscape" class="task-table">
+      <table class="task-table">
         <tr class="task-header">
           <td class="message-icon-read"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
           <td class="task-label">Landscape
@@ -94,16 +98,18 @@
           <td colspan="2">
             <div class="task-container">
               <div class="task-content">
-                <form></form>
-                <input type="text" name="New task" class="tasks-add-field">
-                <input type="button" id="AddLandscape" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('Landscape')">
+                <input type="text" id="landscapetext" name="New task" class="tasks-add-field">
+                <input type="button" id="AddLandscape" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('Landscape','landscapetext')">
+                <br>
+                <table id="Landscape" class="task-table">
+                </table>
             </div>
           </td>
         </tr>
       </table>
     </div>
     <div>
-      <table id="Portrait" class="task-table">
+      <table class="task-table">
         <tr class="task-header">
           <td class="message-icon-read"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
           <td class="task-label">Portrait
@@ -113,10 +119,17 @@
           <td colspan="2">
             <div class="task-container">
               <div class="task-content">
-                <form><input type="checkbox" name="task" value="task1id">Message Bob</form>
-                <form><input type="checkbox" name="task" value="task1id">Upload draft</form>
-                <input type="text" name="New task" class="tasks-add-field">
-                <input type="button" id="AddPortrait" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('Portrait')"></div>
+                <input type="text" id="portraittext" name="New task" class="tasks-add-field">
+                 <input type="button" id="AddPortrait" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('Portrait','portraittext')">
+                 <br>
+                <table id="Portrait" class="task-table">
+                </table>
+                <!--
+                <tr><form><input type="checkbox" name="task" value="task1id">Message Bob</form></tr>
+                <br>
+                <tr><form><input type="checkbox" name="task" value="task1id">Upload draft</form></tr>
+                <br>-->
+               </div>
             </div>
           </td>
         </tr>

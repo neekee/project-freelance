@@ -24,12 +24,15 @@ $(function() {
 
  // following code adapted from http://viralpatel.net/blogs/dynamically-add-remove-rows-in-html-table-using-javascript/
 
-function addTask(tableID) {
+function addTask(tableID,textboxID) {
     var table = document.getElementById(tableID);
     var rowCount = table.rows.length;
     var row = table.insertRow(rowCount);
     var newcell = row.insertCell(0);
-    newcell.innerHTML = '<form><input type="checkbox" name="task" value="task1id">Message Bob</form>'
+    var text = document.getElementById(textboxID);
+    var string = '<form><input type="checkbox" name="task" value="task1id">' + text + '</form>';
+    newcell.innerHTML = string;
+    text.value = "";
 }
     function deleteRow(tableID) {
             try {
