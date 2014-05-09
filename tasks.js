@@ -12,32 +12,38 @@ $(function () {
     });**/
 
     var addFolder = function () {
-        console.log("adding folder")
         var newFolderInput = $("#newfoldername");
         var folderName = newFolderInput.val();
-        newFolderInput.val("");
-        var table = $("<table>").addClass("task-table")
-            .append($("<tr>").addClass("task-header")
-                .append($("<td>").addClass("message-icon-read")
-                    .append($("<span>").addClass("ui-icon").addClass("ui-icon ui-icon-folder-collapsed")))
-                .append($("<td>").addClass("task-label")
-                    .text(folderName))
-                .append($("<td>").addClass("message-icon-toggle").attr("rowspan", 3)
-                    .append($("<span>").addClass("ui-icon ui-icon-carat-1-s"))))
-            .append($("<tr>")
-                .append($("<td>"))
-                .append($("<td>").attr("colspan", 2))
-                .append($("<div>").addClass("task-container")
-                    .append($("<div>").addClass("task-content")
-                        .append($("<input>").attr("type", "text").addClass("tasks-add-field"))
-                        .append($("<button>").addClass("tasks-add-button").text("Add task"))
-                        .append($("<br>"))
-                        .append($("<table>").addClass("task-table").attr("id", folderName))
-                    )));
-        var div = $("body");
-        div.append(table);
-        addExpandListener(table);
-        buttonifyChildren(table);
+        if (folderName.length === 0) {
+            // if empty
+            flashBorder(newFolderInput);
+        }
+        else {
+            // if not empty
+            newFolderInput.val("");
+            var table = $("<table>").addClass("task-table")
+                .append($("<tr>").addClass("task-header")
+                    .append($("<td>").addClass("message-icon-read")
+                        .append($("<span>").addClass("ui-icon").addClass("ui-icon ui-icon-folder-collapsed")))
+                    .append($("<td>").addClass("task-label")
+                        .text(folderName))
+                    .append($("<td>").addClass("message-icon-toggle").attr("rowspan", 3)
+                        .append($("<span>").addClass("ui-icon ui-icon-carat-1-s"))))
+                .append($("<tr>")
+                    .append($("<td>"))
+                    .append($("<td>").attr("colspan", 2))
+                    .append($("<div>").addClass("task-container")
+                        .append($("<div>").addClass("task-content")
+                            .append($("<input>").attr("type", "text").addClass("tasks-add-field"))
+                            .append($("<button>").addClass("tasks-add-button").text("Add task"))
+                            .append($("<br>"))
+                            .append($("<table>").addClass("task-table").attr("id", folderName))
+                        )));
+            var div = $("#main-task");
+            div.append(table);
+            addExpandListener(table);
+            buttonifyChildren(table);
+        }
 
     };
 
@@ -71,10 +77,21 @@ $(function () {
 
 // following code adapted from http://viralpatel.net/blogs/dynamically-add-remove-rows-in-html-table-using-javascript/
 
-    function addTask(tableID, textboxID) {
-        var textBox = document.getElementById(textboxID);
-        var text = textBox.value;
-        if (text == "") {
+    var flashBorder = function (someElement) {
+        var original_color = someElement.css("border-left-color");
+        someElement.css("border-color","#FF0084");
+        someElement.animate({
+            borderTopColor: original_color,
+            borderLeftColor: original_color,
+            borderRightColor: original_color,
+            borderBottomColor: original_color }, 'normal');
+    };
+
+    var addTask = function (tableID, textboxID) {
+        var textBox = $("#"+textboxID);
+        var text = textBox.val();
+        if (text.length === 0) {
+            flashBorder(textBox);
             return;
         }
         var table = document.getElementById(tableID);
@@ -109,7 +126,12 @@ $(function () {
         }
     }
 
+    /** define what happens when the element that matches the selector is clicked */
     $("input#newfolder").click(addFolder);
+    $("input#AddGeneral").click(function() {addTask('General','generaltext');});
+    $("input#AddFantasy").click(function() {addTask('Fantasy','fantasytext');});
+    $("input#AddLandscape").click(function() {addTask('Landscape','landscapetext');});
+    $("input#AddPortrait").click(function() {addTask('Portrait','portraittext');});
 
     $("tr.task-header").click(function () {
         var content = $(this).closest('table').find("div.task-container");
