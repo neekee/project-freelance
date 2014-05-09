@@ -21,10 +21,13 @@ div.task-content {
     padding-bottom: 10px;
 }
 
-input#newprojectname, input.tasks-add-field, input.compose-to, input.compose-subject {
+input#newprojectname, input#newfoldername, input.tasks-add-field, input.compose-to, input.compose-subject {
     background-color: white !important;
     background-image: none !important;
     padding-left: 5px;
     padding-right: 5px;
 }
 
+input#newprojectname, input#newfoldername {
+    margin-left: 0;
+}
