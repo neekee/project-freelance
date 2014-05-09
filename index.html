@@ -33,15 +33,17 @@
     <li><a href="#tabs-tasks">Tasks</a></li>
     <li><a href="#tabs-messages">Messages</a></li>
   </ul>
-  <div id="tabs-projects">
+  <div id="tabs-projects" visible="visible">
+    <div id="projects-main">
+    <input type="text" id="newprojectname" name="New Project" class="project-add-field">
+    <input type="button" id="AddProject" name="+" value="Add New Project" class="project-add-button"
+           onclick="addProject('newprojectname')">
     <p><a class="project" href="fantasy.html">Fantasy</a></p>
 
     <p><a class="project" href="landscape.html">Landscape</a></p>
 
     <p><a class="project" href="portrait.html">Portrait</a></p>
-    <input type="text" id="newprojectname" name="New Project" class="project-add-field">
-    <input type="button" id="AddProject" name="+" value="Add New Project" class="project-add-button"
-           onclick="addProject('newprojectname')">
+    </div>
   </div>
 
   <div id="tabs-tasks">
