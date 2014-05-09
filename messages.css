@@ -16,7 +16,7 @@ table.message-table.unread {
     font-weight: bold;
 }
 
-table.message-table.unread, table.message-table.compose {
+table.message-table.unread, table.message-table.compose.closed {
     background-color: #eeeeee;
     cursor: pointer;
 }

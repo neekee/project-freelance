@@ -5,6 +5,8 @@
 $(function () {
     var message_tab = $("#tabs-messages");
 
+    var all_users = ["Alice", "Barry", "Ben", "Bob", "Burt", "Michelle", "Niki", "Stephie"];
+
     var flashIfEmpty = function(textBox) {
         if (textBox.val().length === 0) {
             var original_color = textBox.css("border-left-color");
@@ -116,9 +118,6 @@ $(function () {
                 $(this).blur()});
     };
 
-
-    $("table.message-table textarea").addClass("ui-corner-all");
-
     // when you click on a message table, it shows the contents of the message.
     var addExpandListener = function(someTable) {
         someTable.click(function () {
@@ -164,6 +163,7 @@ $(function () {
         });
     };
 
+    $("table.message-table textarea").addClass("ui-corner-all");
     // Remove any weird events add to message-table by libraries
     // they stop event bubbling.
     var messageTables = $("table.message-table");
@@ -272,5 +272,11 @@ $(function () {
         event.stopPropagation();
         return false;
     });
+
+    $("input.compose-to").autocomplete({
+       source: all_users
+    });
+
+    addNewMessage("Bob", "How's the project coming along?", new Date(2014, 4, 8, 17, 9, 0, 0), "Keep me updated.", false, false);
 
 });
