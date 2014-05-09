@@ -21,7 +21,7 @@
   <script type="text/javascript" src="tabs.js"></script>
   <script type="text/javascript" src="tasks.js"></script>
   <script type="text/javascript" src="messages.js"></script>
-
+  <script type="text/javascript" src="project.js"></script>
 </head>
 
 <body>
@@ -34,11 +34,13 @@
     <li><a href="#tabs-messages">Messages</a></li>
   </ul>
   <div id="tabs-projects">
-    <p><a href="fantasy.html">Fantasy</a></p>
+    <p><a class="project" href="fantasy.html">Fantasy</a></p>
 
-    <p><a href="landscape.html">Landscape</a></p>
+    <p><a class="project" href="landscape.html">Landscape</a></p>
 
-    <p><a href="portrait.html">Portrait</a></p>
+    <p><a class="project" href="portrait.html">Portrait</a></p>
+    <input type="text" id="newprojectname" name="New Project" class="project-add-field">
+    <input type="button" id="AddProject" name="+" value="Add New Project" class="project-add-button" onclick="addProject('newprojectname')">    
   </div>
 
   <div id="tabs-tasks">
