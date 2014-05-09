@@ -29,10 +29,11 @@ function addTask(tableID,textboxID) {
     var rowCount = table.rows.length;
     var row = table.insertRow(rowCount);
     var newcell = row.insertCell(0);
-    var text = document.getElementById(textboxID);
-    var string = '<form><input type="checkbox" name="task" value="task1id">' + text + '</form>';
+    var textBox = document.getElementById(textboxID);
+    var text = textBox.value;
+    var string = '<input type="checkbox" name="task" value="task1id">' + text + '</form>';
     newcell.innerHTML = string;
-    text.value = "";
+    textBox.value = "";
 }
     function deleteRow(tableID) {
             try {
