@@ -17,10 +17,10 @@ $(function() {
     $( "input[type=submit], input[type=button], button" )
         .button()
         .click(function( event ) {
-            event.preventDefault();
+           event.preventDefault();
         })
         .bind('mouseup', function() {
-            $(this).blur()});
+           $(this).blur()});
 
     // style text inputs
     // from http://stackoverflow.com/questions/6802085/jquery-ui-styled-text-input-box

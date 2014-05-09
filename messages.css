@@ -21,7 +21,7 @@ table.message-table.unread, table.message-table.compose {
     cursor: pointer;
 }
 
-table.message-table span.ui-icon-mail-open, .blue-icon {
+table.message-table span.ui-icon-mail-open, table.message-table span.ui-icon-arrowthick-1-e, table.message-table span.ui-icon-arrowreturnthick-1-w, .blue-icon {
     background-image: url("external_css/flick/images/ui-icons_0073ea_256x240.png") !important;
 }
 
@@ -108,8 +108,7 @@ span.message-timestamp-separator {
 /***************/
 
 input.input-file {
-    opacity: 0;
-    width: 1px;
+    display: none;
 }
 
 div.file-list {
