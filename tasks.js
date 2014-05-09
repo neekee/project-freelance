@@ -21,7 +21,7 @@ $(function () {
         else {
             // if not empty
             newFolderInput.val("");
-            var table = $("<table>").addClass("task-table")
+            var table = $("<table>").addClass("task-table closed")
                 .append($("<tr>").addClass("task-header")
                     .append($("<td>").addClass("message-icon-read")
                         .append($("<span>").addClass("ui-icon").addClass("ui-icon ui-icon-folder-collapsed")))
@@ -42,6 +42,7 @@ $(function () {
             var div = $("#main-task");
             div.append(table);
             addExpandListener(table);
+            addCollapseListener(table);
             buttonifyChildren(table);
             textInputifyChildren(table);
         }
@@ -55,15 +56,27 @@ $(function () {
             if (!content.is(":visible")) {
                 icon.addClass("ui-icon-carat-1-n");
                 icon.removeClass("ui-icon-carat-1-s");
+                content.slideToggle("fast");
             }
-            else {
-                icon.addClass("ui-icon-carat-1-s");
-                icon.removeClass("ui-icon-carat-1-n");
-            }
-            content.slideToggle("fast");
             event.stopPropagation();
         });
     }
+
+    var addCollapseListener = function (someTable) {
+        someTable.find("tr.task-header").click(function () {
+            var table = $(this).closest('table');
+            var content = table.find("div.task-container");
+            if (content.is(":visible")) {
+                var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
+                icon.addClass("ui-icon-carat-1-s");
+                icon.removeClass("ui-icon-carat-1-n");
+                table.addClass("closed");
+                content.slideToggle("fast");
+                event.stopPropagation();
+            }
+        });
+    };
+
 
     function buttonifyChildren(someParent) {
         someParent.find("input[type=submit], input[type=button], button")
