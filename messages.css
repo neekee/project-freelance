@@ -30,17 +30,17 @@ td.message-label {
     width: 100px;
 }
 
-td.message-icon-td, td.message-right-padding {
+td.message-icon-read, td.message-icon-toggle {
     width: 30px;
 }
 
 /* top-align the expand/collapse icon */
-td.message-right-padding {
+td.message-icon-toggle {
     vertical-align: top;
 }
 
 /* right-align the expand/collapse icon */
-td.message-right-padding span {
+td.message-icon-toggle span {
     float: right;
 }
 
