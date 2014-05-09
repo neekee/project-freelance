@@ -59,6 +59,8 @@ div.message-reply {
 
 textarea {
     border: 1px solid #dddddd;
+    padding-top: 7px;
+    padding-bottom: 7px;
 }
 
 textarea.reply {
