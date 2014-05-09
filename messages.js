@@ -5,23 +5,41 @@
 $(function () {
     var message_tab = $("#tabs-messages");
 
+    var flashIfEmpty = function(textBox) {
+        if (textBox.val().length === 0) {
+            var original_color = textBox.css("border-left-color");
+            textBox.css("border-color", "#FF0084");
+            textBox.animate({
+                borderTopColor: original_color,
+                borderLeftColor: original_color,
+                borderRightColor: original_color,
+                borderBottomColor: original_color }, 'normal');
+        }
+    };
+
     /**
-     * Sends a new message.
+     * Adds a new message.
      * @param other_user String
      * @param subject String
-     * @param date String
-     * @param time boolean
+     * @param now Date
      * @param content String
      * @param fromMe boolean
      * @param isReply boolean
      */
-    var addNewMessage = function (other_user, subject, date, time, content, fromMe, isReply) {
+    var addNewMessage = function (other_user, subject, now, content, fromMe, isReply) {
         // TODO: have this pass in an object instead
+        var month = now.getMonth() + 1;
+        var minutes = now.getMinutes();
+        minutes = minutes > 9 ? minutes : "0" + minutes;
+        var time = now.getHours() + ":" + minutes;
+        var date = month + "/" + now.getDate() + "/" + now.getFullYear();
         // already read by default
         var readIconClass =
             fromMe ? (isReply ? "ui-icon-arrowreturnthick-1-w" : "ui-icon-arrowthick-1-e") : "ui-icon-mail-closed";
-        var toggleIconClass = isReply ? " blue-icon" : "";
-        var table = $("<table>").addClass("message-table ui-corner-all closed")
+        var toggleIconClass = fromMe ? " blue-icon" : "";
+        var unreadClass = fromMe ? "" : " unread";
+
+        var table = $("<table>").addClass("message-table ui-corner-all closed" + unreadClass)
             .append($("<tr>").addClass("message-header")
                 .append($("<td>").addClass("message-icon-read")
                     .append($("<span>").addClass("ui-icon").addClass(readIconClass)))
@@ -67,10 +85,26 @@ $(function () {
                     )
                 )
             );
-        $(".message-table.compose").after(table);
-        // ughhhhh! fix everything here.
+        table.insertAfter($(".message-table.compose")).show("slow");
+        // flash
+        var original_color = table.css("border-left-color");
+        table.css("border-color", fromMe ? "#0073ea" : "#FF0084");
+        table.animate({
+            borderTopColor: original_color,
+            borderLeftColor: original_color,
+            borderRightColor: original_color,
+            borderBottomColor: original_color }, 5000);
+    // ughhhhh! fix everything here.
         addExpandListener(table);
+        addCollapseListener(table);
         buttonifyChildren(table);
+        if (fromMe) {
+            setTimeout(
+                function()
+                {
+                    addNewMessage(other_user, "Re: " + subject, new Date(), "Wow, that sounds great! Keep up the good work.", false, true)
+                }, 5000);
+        }
     };
 
     var buttonifyChildren = function(someParent) {
@@ -86,13 +120,13 @@ $(function () {
     $("table.message-table textarea").addClass("ui-corner-all");
 
     // when you click on a message table, it shows the contents of the message.
-    var addExpandListener = function(someElement) {
-        someElement.click(function (evt) {
+    var addExpandListener = function(someTable) {
+        someTable.click(function () {
             var content = $(this).find("div.message-container");
             if (!content.is(":visible")) {
                 $(this).removeClass("closed");
                 // slide out the message content
-                content.slideToggle(0, function () {
+                content.slideToggle("fast", function () {
                     var textarea = content.find("textarea.expanding");
                     if (!textarea.expanding('active')) {
                         textarea.expanding();
@@ -115,25 +149,42 @@ $(function () {
         });
     };
 
+    var addCollapseListener = function (someTable) {
+        someTable.find("tr.message-header").click(function () {
+            var table = $(this).closest('table');
+            var content = table.find("div.message-container");
+            if (content.is(":visible")) {
+                content.slideToggle("fast");
+                var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
+                icon.addClass("ui-icon-carat-1-s");
+                icon.removeClass("ui-icon-carat-1-n");
+                table.addClass("closed");
+                event.stopPropagation();
+            }
+        });
+    };
+
     // Remove any weird events add to message-table by libraries
     // they stop event bubbling.
-    $("table.message-table").off();
-    addExpandListener($("table.message-table"));
+    var messageTables = $("table.message-table");
+    messageTables.off();
+    addExpandListener(messageTables);
+    addCollapseListener(messageTables);
 
-    message_tab.on("click", "tr.message-header", function () {
-        var table = $(this).closest('table');
-        var content = table.find("div.message-container");
-        if (content.is(":visible")) {
-            content.slideToggle("fast");
-            var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
-            icon.addClass("ui-icon-carat-1-s");
-            icon.removeClass("ui-icon-carat-1-n");
-            table.addClass("closed");
-            event.stopPropagation();
-        }
-    });
+//    message_tab.on("click", "tr.message-header", function () {
+//        var table = $(this).closest('table');
+//        var content = table.find("div.message-container");
+//        if (content.is(":visible")) {
+//            content.slideToggle("fast");
+//            var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
+//            icon.addClass("ui-icon-carat-1-s");
+//            icon.removeClass("ui-icon-carat-1-n");
+//            table.addClass("closed");
+//            event.stopPropagation();
+//        }
+//    });
 
-    // Take thse away when all messages are generated via send and receive
+    // Take these away when all messages are generated via send and receive
     $("button.message-send").button({
         icons: {
             primary: "ui-icon ui-icon-mail-closed"
@@ -147,6 +198,33 @@ $(function () {
         }
 
      });
+
+    message_tab.on("click", "button.message-send", function () {
+        var table = $(this).closest("table.message-table.compose");
+
+        var textarea = table.find("textarea.compose");
+        var input_to = table.find("input.compose-to");
+        var input_subject = table.find("input.compose-subject");
+
+        var content = textarea.val();
+        var recipient = input_to.val();
+        var subject = input_subject.val();
+
+        // TODO: check recipient against some list
+        if (content.length > 0 && recipient.length > 0 && subject.length > 0) {
+            var now = new Date();
+            addNewMessage(recipient, subject, now, content, true, false);
+            textarea.val("");
+            input_to.val("");
+            input_subject.val("");
+        }
+        else {
+            flashIfEmpty(input_to);
+            flashIfEmpty(input_subject);
+            flashIfEmpty(textarea);
+        }
+    });
+
     message_tab.on("click", "button.message-send-reply", function () {
         var table = $(this).closest("table.message-table");
         var textarea = table.find("textarea.reply");
@@ -154,17 +232,14 @@ $(function () {
         if (content.length > 0) {
             var icon = table.find("span.ui-icon-mail-open");
             var now = new Date();
-            var month = now.getMonth() + 1;
-            var time = now.getHours() + ":" + now.getMinutes();
-            var date = month + "/" + now.getDate() + "/" + now.getFullYear();
             var other_user = table.find("td.message-sender > span.message-user").text();
             var subject = "Re: " + table.find("td.message-subject").text();
-            addNewMessage(other_user, subject, date, time, content, true, true);
+            addNewMessage(other_user, subject, now, content, true, true)
+            textarea.val("");
         }
         else {
-            var original_color = textarea.css("border-left-color");
-            textarea.css("border-color", "#FF0084");
-            textarea.animate({ borderTopColor: original_color, borderLeftColor: original_color, borderRightColor: original_color, borderBottomColor: original_color, }, 'fast');
+            // textarea is empty
+            flashIfEmpty(textarea);
         }
     });
 
