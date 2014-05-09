@@ -1,16 +1,29 @@
 $(function() {
     // when you click on a task table, it displays the tasks.
 
+    /**
      $( "table.message-table" ).click(function() {
         var content = $(this).find( "div.task-container" );
-            event.stopPropagation();
-            content.slideToggle( "fast");
-    });
+        var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
+        icon.addClass("ui-icon-carat-1-n");
+        icon.removeClass("ui-icon-carat-1-s");
+        event.stopPropagation();
+        content.slideToggle( "fast");
+    });**/
 
     $( "tr.task-header" ).click(function() {
         var content = $(this).closest('table').find( "div.task-container" );
-          content.slideToggle( "fast" );
-          event.stopPropagation();
+        var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
+        if (!content.is(":visible")) {
+            icon.addClass("ui-icon-carat-1-n");
+            icon.removeClass("ui-icon-carat-1-s");
+        }
+        else {
+            icon.addClass("ui-icon-carat-1-s");
+            icon.removeClass("ui-icon-carat-1-n");
+        }
+        content.slideToggle( "fast" );
+        event.stopPropagation();
     });
 
 
