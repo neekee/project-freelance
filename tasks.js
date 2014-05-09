@@ -31,18 +31,19 @@ $(function () {
                         .append($("<span>").addClass("ui-icon ui-icon-carat-1-s"))))
                 .append($("<tr>")
                     .append($("<td>"))
-                    .append($("<td>").attr("colspan", "2"))
-                    .append($("<div>").addClass("task-container")
-                        .append($("<div>").addClass("task-content")
-                            .append($("<input>").attr("type", "text").addClass("tasks-add-field"))
-                            .append($("<button>").addClass("tasks-add-button").text("Add task"))
-                            .append($("<br>"))
-                            .append($("<table>").addClass("task-table").attr("id", folderName))
-                        )));
+                    .append($("<td>").attr("colspan", "2")
+                        .append($("<div>").addClass("task-container")
+                            .append($("<div>").addClass("task-content")
+                                .append($("<input>").attr("type", "text").addClass("tasks-add-field"))
+                                .append($("<button>").addClass("tasks-add-button").text("Add"))
+                                .append("<br>")
+                                .append($("<table>").addClass("task-table").attr("id", folderName)))
+                            )));
             var div = $("#main-task");
             div.append(table);
             addExpandListener(table);
             buttonifyChildren(table);
+            textInputifyChildren(table);
         }
 
     };
@@ -71,9 +72,23 @@ $(function () {
             })
             .bind('mouseup', function () {
                 $(this).blur()
-            });
+            })
+            .button();
     }
 
+    function textInputifyChildren(someParent) {
+        someParent.find('input:text, input:password')
+            .button()
+            .css({
+                'font' : 'inherit',
+                'color' : 'inherit',
+                'text-align' : 'left',
+                'outline' : 'none',
+                'cursor' : 'text'
+            })
+            .off('mouseenter').off('mousedown').off('keydown').off('focus');
+
+    }
 
 // following code adapted from http://viralpatel.net/blogs/dynamically-add-remove-rows-in-html-table-using-javascript/
 
