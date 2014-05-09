@@ -50,12 +50,14 @@ function addFolder() {
             .append($("<td>"))
             .append($("<td>").attr("colspan", 2))
                 .append($("<div>").addClass("task-container")
-                        .append($("<div>").addClass("task-content"))
+                        .append($("<div>").addClass("task-content")
                         .append($("<input>").attr("type","text").addClass("tasks-add-field"))
                         .append($("<button>").addClass("tasks-add-button").text("Add task"))
-                )
-        )
-    $(".main-task").after(table);
+                        .append($("<br>"))
+                        .append($("table>").addClass("task-table").attr("id",folderName))
+        )));
+    var div = document.getElementById("main-task");
+    div.appendChild(table);
     addExpandListener(table);
     buttonifyChildren(table);
 }
