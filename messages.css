@@ -68,7 +68,15 @@ textarea.reply {
 /* buttons with icons */
 button.message-choose-file, button.message-send-reply, button.message-send {
     float: right;
+}
+
+button.message-choose-file, button.message-send-reply, button.message-send, .file-list {
+    margin-top: 4px;
+}
+
+button.message-choose-file {
     margin-left: 0;
+    margin-right: 2px;
 }
 
 button.message-send, button.message-send-reply {
@@ -114,7 +122,7 @@ input.input-file {
 div.file-list {
     float: right;
     display: inline-block;
-    margin: 0 10px 0 10px;
+    margin: 2px 10px 0 10px;
 }
 
 .file-list .close-button {
@@ -125,7 +133,7 @@ div.file-list {
 .file-list .file-chip {
     border-width: 1px;
     border-style: dotted;
-    padding: .4em 1em .4em .8em;
+    padding: .4em 1em .3em .8em;
     display: inline-block;
     margin-top: .1em;
     margin-left: .2em;
