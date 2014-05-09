@@ -95,7 +95,7 @@ $(function () {
             borderTopColor: original_color,
             borderLeftColor: original_color,
             borderRightColor: original_color,
-            borderBottomColor: original_color }, 5000);
+            borderBottomColor: original_color }, 3000);
     // ughhhhh! fix everything here.
         addExpandListener(table);
         addCollapseListener(table);
