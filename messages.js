@@ -34,7 +34,7 @@ $(function () {
                     .text("Subject:"))
                 .append($("<td>").addClass("message-subject")
                     .text(subject)))
-            .append($("<tr>").addClass("message-header")
+            .append($("<tr>")
                 .append($("<td>"))
                 .append($("<td>").attr("colspan", 2)
                     .append($("<div>").addClass("message-container")
@@ -43,9 +43,18 @@ $(function () {
                         .append($("<div>").addClass("message-reply")
                             .append($("<textarea>").addClass("expanding reply").attr({"placeholder": "Reply?", "rows": "1"}))
                             .append($("<input>").attr("type", "file").addClass("input-file"))
-                            .append($("<button>").addClass("message-send-reply").text("Send"))
-                            .append($("<button>").addClass("message-choose-file").text("Choose file..."))
-                            .append($("<div>").addClass("file-list"))
+                            .append($("<button>").addClass("message-send-reply").text("Send").button({
+                                icons: {
+                                    primary: "ui-icon ui-icon-mail-closed"
+                                }
+
+                            })).
+                            append($("<button>").addClass("message-choose-file").text("Choose file...").button({
+                                icons: {
+                                    primary: "ui-icon ui-icon-folder-open"
+                                }
+                            })).
+                            append($("<div>").addClass("file-list"))
                         )
                     )
                 )
@@ -58,7 +67,6 @@ $(function () {
 
     var buttonifyChildren = function(someParent) {
         someParent.find("input[type=submit], input[type=button], button")
-            .button()
             .click(function( event ) {
                 event.preventDefault();
             })
@@ -71,7 +79,7 @@ $(function () {
 
     // when you click on a message table, it shows the contents of the message.
     var addExpandListener = function(someElement) {
-        someElement.click(function () {
+        someElement.click(function (evt) {
             var content = $(this).find("div.message-container");
             if (!content.is(":visible")) {
                 $(this).removeClass("closed");
@@ -99,9 +107,12 @@ $(function () {
         });
     };
 
+    // Remove any weird events add to message-table by libraries
+    // they stop event bubbling.
+    $("table.message-table").off();
     addExpandListener($("table.message-table"));
 
-    $("tr.message-header").click(function () {
+    $("#tabs-messages").on("click", "tr.message-header", function () {
         var table = $(this).closest('table');
         var content = table.find("div.message-container");
         if (content.is(":visible")) {
@@ -114,20 +125,21 @@ $(function () {
         }
     });
 
-
+    // Take thse away when all messages are generated via send and receive
     $("button.message-send").button({
         icons: {
             primary: "ui-icon ui-icon-mail-closed"
         }
     });
 
-    // send a reply
+    //send a reply
     $("button.message-send-reply").button({
         icons: {
             primary: "ui-icon ui-icon-mail-closed"
         }
 
-    }).click(function () {
+     });
+    $("#tabs-messages").on("click", "button.message-send-reply", function () {
             var icon = $(this).closest("table.message-table").find("span.ui-icon-mail-open");
 //        icon.removeClass("ui-icon-mail-open");
 //        icon.addClass("ui-icon-arrowreturnthick-1-w");
@@ -145,7 +157,7 @@ $(function () {
         }
     });
 
-    $(".input-file").change(function (evt) {
+    $("#tabs-messages").on("change", "input.input-file", function (evt) {
         var file = this.files[0];
         if (!file) {
             return;
@@ -161,7 +173,7 @@ $(function () {
             }).addClass("close-button")).addClass("file-chip").appendTo($(evt.currentTarget).parent().find(".file-list"));
     });
 
-    $(".message-choose-file").click(function () {
+    $("#tabs-messages").on("click", ".message-choose-file", function () {
         var input = $(this).closest('div.message-reply').find("input.input-file");
         input.trigger('click');
         event.stopPropagation();

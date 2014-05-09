@@ -108,8 +108,7 @@ span.message-timestamp-separator {
 /***************/
 
 input.input-file {
-    opacity: 0;
-    width: 1px;
+    display: none;
 }
 
 div.file-list {
