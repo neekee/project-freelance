@@ -56,8 +56,8 @@ function addFolder() {
                         .append($("<br>"))
                         .append($("table>").addClass("task-table").attr("id",folderName))
         )));
-    var div = document.getElementById("main-task");
-    div.appendChild(table);
+    var div = $("#main-task");
+    div.append(table);
     addExpandListener(table);
     buttonifyChildren(table);
 }
