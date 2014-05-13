@@ -8,7 +8,6 @@ table.message-table {
 }
 
 table.message-table.closed {
-    background-color: #eeeeee;
     cursor: pointer;
 }
 

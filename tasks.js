@@ -1,16 +1,32 @@
 $(function () {
-    // when you click on a task table, it displays the tasks.
 
-    /**
-     $( "table.message-table" ).click(function() {
-        var content = $(this).find( "div.task-container" );
-        var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
-        icon.addClass("ui-icon-carat-1-n");
-        icon.removeClass("ui-icon-carat-1-s");
-        event.stopPropagation();
-        content.slideToggle( "fast");
-    });**/
+    /* stylize newly added buttons */
+    var buttonifyChildren = function(someParent) {
+        someParent.find("input[type=submit], input[type=button], button")
+            .click(function (event) {
+                event.preventDefault();
+            })
+            .bind('mouseup', function () {
+                $(this).blur()
+            })
+            .button();
+    };
 
+    /* stylize newly added text inputs */
+    var textInputifyChildren = function(someParent) {
+        someParent.find('input:text, input:password')
+            .button()
+            .css({
+                'font' : 'inherit',
+                'color' : 'inherit',
+                'text-align' : 'left',
+                'outline' : 'none',
+                'cursor' : 'text'
+            })
+            .off('mouseenter').off('mousedown').off('keydown').off('focus');
+    };
+
+    /* add folder */
     var addFolder = function () {
         var newFolderInput = $("#newfoldername");
         var folderName = newFolderInput.val();
@@ -37,34 +53,57 @@ $(function () {
                                 .append($("<input>").attr("type", "text").addClass("tasks-add-field"))
                                 .append($("<input>").attr("type", "button").addClass("tasks-add-button").attr("value","Add"))
                                 .append("<br>")
-                                .append($("<table>").addClass("task-table").attr("id", folderName)))
+                                .append($("<table>").addClass("task-list").attr("id", folderName)))
                             )));
             var div = $("#main-task");
             div.append(table);
-            addExpandListener(table);
-            addCollapseListener(table);
             buttonifyChildren(table);
             textInputifyChildren(table);
         }
 
     };
 
-    var addExpandListener = function (someElement) {
-        someElement.click(function (evt) {
-            var content = $(this).closest('table').find("div.task-container");
-            var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
-            if (!content.is(":visible")) {
-                icon.addClass("ui-icon-carat-1-n");
-                icon.removeClass("ui-icon-carat-1-s");
-                content.slideToggle("fast");
-                event.stopPropagation();
-            }
-        });
-    }
+    $("input#newfolder").click(addFolder);
 
-    var addCollapseListener = function (someTable) {
-        someTable.find("tr.task-header").click(function () {
-            var table = $(this).closest('table');
+    var task_tab = $("#tabs-tasks");
+
+    /* add task */
+    task_tab.on("click", ".tasks-add-button", function() {
+        var div = $(this).closest("div");
+        var textInput = div.find(".tasks-add-field");
+        var text = textInput.val();
+        if (text.length === 0) {
+            flashBorder(textInput);
+        }
+        else {
+            textInput.val("");
+            var putTasksHere = div.find(".task-list");
+            putTasksHere
+                .append($("<tr>").addClass("task-entry")
+                    .append($("<td>")
+                        .append($("<input>").attr("type","checkbox").addClass("task-checkbox"))
+                        .append($("<span>").addClass("task-text").text(text))
+                        .append($("<span>").addClass("task-close ui-icon ui-icon-close"))));
+        }
+    });
+
+    /* expand */
+    task_tab.on("click", "table.task-table.closed", function() {
+        var content = $(this).find("div.task-container");
+        var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
+        if (!content.is(":visible")) {
+            icon.addClass("ui-icon-carat-1-n");
+            icon.removeClass("ui-icon-carat-1-s");
+            $(this).removeClass("closed");
+            content.slideToggle("fast");
+            event.stopPropagation();
+        }
+    });
+
+    /* collapse */
+    task_tab.on("click", ".task-header", function() {
+        var table = $(this).closest("table.task-table");
+        if (!table.hasClass("closed")) {
             var content = table.find("div.task-container");
             if (content.is(":visible")) {
                 var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
@@ -74,149 +113,34 @@ $(function () {
                 content.slideToggle("fast");
                 event.stopPropagation();
             }
-        });
-    };
-
-
-    function buttonifyChildren(someParent) {
-        someParent.find("input[type=submit], input[type=button], button")
-            .click(function (event) {
-                event.preventDefault();
-            })
-            .bind('mouseup', function () {
-                $(this).blur()
-            })
-            .button();
-    }
-
-    function textInputifyChildren(someParent) {
-        someParent.find('input:text, input:password')
-            .button()
-            .css({
-                'font' : 'inherit',
-                'color' : 'inherit',
-                'text-align' : 'left',
-                'outline' : 'none',
-                'cursor' : 'text'
-            })
-            .off('mouseenter').off('mousedown').off('keydown').off('focus');
-
-    }
-
-// following code adapted from http://viralpatel.net/blogs/dynamically-add-remove-rows-in-html-table-using-javascript/
-
-    var flashBorder = function (someElement) {
-        var original_color = someElement.css("border-left-color");
-        someElement.css("border-color","#FF0084");
-        someElement.animate({
-            borderTopColor: original_color,
-            borderLeftColor: original_color,
-            borderRightColor: original_color,
-            borderBottomColor: original_color }, 'normal');
-    };
-
-
-    function deleteRow(tableID) {
-        try {
-            var table = document.getElementById(tableID);
-            var rowCount = table.rows.length;
-
-            for (var i = 0; i < rowCount; i++) {
-                var row = table.rows[i];
-                var chkbox = row.cells[0].childNodes[0];
-                if (null != chkbox && true == chkbox.checked) {
-                    if (rowCount <= 1) {
-                        alert("Cannot delete all the rows.");
-                        break;
-                    }
-                    table.deleteRow(i);
-                    rowCount--;
-                    i--;
-                }
-            }
-        } catch (e) {
-            alert(e);
         }
-    }
+    });
 
-    /** define what happens when the element that matches the selector is clicked */
-    $("input#newfolder").click(addFolder);
-//    $("input#AddGeneral").click(function() {addTask('General','generaltext');});
-//    $("input#AddFantasy").click(function() {addTask('Fantasy','fantasytext');});
-//    $("input#AddLandscape").click(function() {addTask('Landscape','landscapetext');});
-//    $("input#AddPortrait").click(function() {addTask('Portrait','portraittext');});
-
-    $("tr.task-header").click(function () {
-        var content = $(this).closest('table').find("div.task-container");
-        var icon = $(this).find("td.message-icon-toggle > span.ui-icon");
-        if (!content.is(":visible")) {
-            icon.addClass("ui-icon-carat-1-n");
-            icon.removeClass("ui-icon-carat-1-s");
-        }
-        else {
-            icon.addClass("ui-icon-carat-1-s");
-            icon.removeClass("ui-icon-carat-1-n");
-        }
-        content.slideToggle("fast");
+    task_tab.on("mouseenter", "tr.task-entry", function() {
+        var close = $(this).find(".task-close");
+        close.css("visibility","visible");
         event.stopPropagation();
     });
 
-
-    $("#select_logo").click(function () {
-        $("#logo").trigger('click');
-        return false;
+    task_tab.on("mouseleave", "tr.task-entry", function() {
+        var close = $(this).find(".task-close");
+        close.css("visibility","hidden");
+        event.stopPropagation();
     });
 
+    task_tab.on("click", ".task-close", function() {
+        $(this).closest("tr").remove();
+    });
 
-
-    var task_tab = $("#tabs-tasks");
-    /** add task */
-    task_tab.on("click", ".tasks-add-button", function() {
-        console.log("yeah")
-        var div = $(this).closest("div")
-        var textInput = div.find(".tasks-add-field");
-        var text = textInput.val();
-        if (text.length === 0) {
-            flashBorder(textInput);
+    task_tab.on("change", ".task-checkbox", function() {
+        var text = $(this).closest("td").find(".task-text");
+        if ($(this).is(':checked')) {
+            text.css("text-decoration","line-through");
         }
         else {
-            var putTasksHere = div.find(".task-table");
-            putTasksHere
-                .append($("<tr>")
-                    .append($("<td>")
-                        .append($("<input>").attr("type","checkbox"))
-                        .append(" " + text)));
+            text.css("text-decoration","none");
         }
+        event.stopPropagation();
     });
 
-
 });
-
-/**
- <table class="task-table">
- <tr class="task-header">
- <td class="message-icon-read"><span class="ui-icon ui-icon-folder-collapsed"></span></td>
- <td class="task-label">General
- <td class="message-icon-toggle" rowspan="3"><span class="ui-icon ui-icon-carat-1-s"></span></td>
- </tr>
- <tr>
- <td colspan="2">
- <div class="task-container">
- <div class="task-content">
- <input type="text" id="generaltext" name="New task" class="tasks-add-field">
- <input type="button" id="AddGeneral" name="Add" value="Add" class="tasks-add-button"onclick ="addTask('General','generaltext')">
- <br>
- <table id="General" class="task-table">
- </table>
- </div>
- </div>
- </td>
- </tr>
- </table>
- </div>
-
- **/
-
-
-
-
