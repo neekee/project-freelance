@@ -27,7 +27,7 @@ function addProject(textboxID) {
 	}
 	var lastProject = $(".project").last()
 	var project_slug = text.replace(/\s+/g, '').toLowerCase();
-	console.log(project_slug);
+	console.log("ohai" + project_slug);
 	var string = "<p><a class=\"project\" href=\"javascript:void(0)\" onclick=\"showProjectDiv('" + project_slug + "');\">" + text + "</a></p>";
 	lastProject.after(string);
 	textBox.value = "";
@@ -81,15 +81,17 @@ function addProjectDiv(projectName) {
   	// 	$("#projects-main").hide();
   	// 	$(this).show();
   	// });
-  	$("#" + div_name).hide();
+	console.log("pls hide");
+  	// $("#" + div_name).hide();
 };
 
-function showProjectDiv() {
-	// console.log("got here");
-	// console.log($("#" + projectSlug));
-	$("#projects-main").hide();
-	$(this).show();
-};
+// function showProjectDiv() {
+// 	// console.log("got here");
+// 	// console.log($("#" + projectSlug));
+// 	$("#projects-main").hide();
+// 	console.log
+// 	$(this).show();
+// };
 
 });
 
@@ -161,9 +163,11 @@ function addProjectDiv(projectName) {
   	console.log($("#" + div_name));
 };
 
-function showProjectDiv() {
-	// console.log("got here");
-	// console.log($("#" + projectSlug));
+function showProjectDiv(projectSlug) {
+	console.log("got here");
+	console.log($("#" + projectSlug));
+	console.log(this);
+	console.log($(this));
 	$("#projects-main").hide();
-	// $(this).show();
+	$(this).show();
 };
