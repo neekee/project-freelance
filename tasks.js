@@ -26,8 +26,7 @@ $(function () {
             .off('mouseenter').off('mousedown').off('keydown').off('focus');
     };
 
-    /* add folder */
-    var addFolder = function () {
+    var tryToAddFolder = function () {
         var newFolderInput = $("#newfoldername");
         var folderName = newFolderInput.val();
         if (folderName.length === 0) {
@@ -35,35 +34,39 @@ $(function () {
             flashBorder(newFolderInput);
         }
         else {
-            // if not empty
-            newFolderInput.val("");
-            var table = $("<table>").addClass("task-table closed")
-                .append($("<tr>").addClass("task-header")
-                    .append($("<td>").addClass("message-icon-read")
-                        .append($("<span>").addClass("ui-icon").addClass("ui-icon ui-icon-folder-collapsed")))
-                    .append($("<td>").addClass("task-label")
-                        .text(folderName))
-                    .append($("<td>").addClass("message-icon-toggle").attr("rowspan", "3")
-                        .append($("<span>").addClass("ui-icon ui-icon-carat-1-s"))))
-                .append($("<tr>")
-                    .append($("<td>"))
-                    .append($("<td>").attr("colspan", "2")
-                        .append($("<div>").addClass("task-container")
-                            .append($("<div>").addClass("task-content")
-                                .append($("<input>").attr("type", "text").addClass("tasks-add-field"))
-                                .append($("<input>").attr("type", "button").addClass("tasks-add-button").attr("value","Add"))
-                                .append("<br>")
-                                .append($("<table>").addClass("task-list").attr("id", folderName)))
-                            )));
-            var div = $("#main-task");
-            div.append(table);
-            buttonifyChildren(table);
-            textInputifyChildren(table);
+            addFolder(folderName);
         }
-
     };
 
-    $("input#newfolder").click(addFolder);
+    /* add folder */
+    var addFolder = function (folderName) {
+        var newFolderInput = $("#newfoldername");
+        newFolderInput.val("");
+        var table = $("<table>").addClass("task-table closed")
+            .append($("<tr>").addClass("task-header")
+                .append($("<td>").addClass("message-icon-read")
+                    .append($("<span>").addClass("ui-icon").addClass("ui-icon ui-icon-folder-collapsed")))
+                .append($("<td>").addClass("task-label")
+                    .text(folderName))
+                .append($("<td>").addClass("message-icon-toggle").attr("rowspan", "3")
+                    .append($("<span>").addClass("ui-icon ui-icon-carat-1-s"))))
+            .append($("<tr>")
+                .append($("<td>"))
+                .append($("<td>").attr("colspan", "2")
+                    .append($("<div>").addClass("task-container")
+                        .append($("<div>").addClass("task-content")
+                            .append($("<input>").attr("type", "text").addClass("tasks-add-field"))
+                            .append($("<input>").attr("type", "button").addClass("tasks-add-button").attr("value","Add"))
+                            .append("<br>")
+                            .append($("<table>").addClass("task-list")))
+                        )));
+        var div = $("#main-task");
+        div.append(table);
+        buttonifyChildren(table);
+        textInputifyChildren(table);
+    };
+
+    $("input#newfolder").click(tryToAddFolder);
 
     var task_tab = $("#tabs-tasks");
 
@@ -143,4 +146,5 @@ $(function () {
         event.stopPropagation();
     });
 
+    addFolder("General");
 });
