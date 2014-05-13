@@ -27,17 +27,20 @@ function addProject(textboxID) {
 	if (text == "") {
 		return;
 	}
-	var lastProject = $(".project").last()
-	var project_slug = text.replace(/\s+/g, '').toLowerCase();
-	console.log(project_slug);
-	var string = "<br><br><a class=\"project\" href=\"javascript:void(0)\" onclick=\"showProjectDiv('" + project_slug + "');\">" + text + "</a>";
-	lastProject.after(string);
 	textBox.value = "";
 	addProjectDiv(text);
+	console.log("whynot");
 }
 
 function addProjectDiv(projectName) {
-	var div_name = "project-" + projectName.replace(/\s+/g, '').toLowerCase();
+	console.log("gothere");
+	var project_slug = projectName.replace(/\s+/g, '').toLowerCase();
+	var div_name = "project-" + project_slug;
+	var lastProject = $(".project").last()
+	console.log(project_slug);
+	var string = "<br><br><a class=\"project\" href=\"javascript:void(0)\" onclick=\"showProjectDiv('" + project_slug + "');\">" + projectName + "</a>";
+	lastProject.after(string);
+
 	var html =  '<div id="' + div_name + '">\
   				  <div><h1>Project: ' + projectName + '</h1></div>\
   				    <table cellpadding="50px">\
