@@ -77,10 +77,10 @@ function addProjectDiv(projectName) {
   					</table>\
   				  </div>';
   	$("#projects-main").after(html);
-  	$("#" + div_name).addEventListener('click', function() {
-  		$("#projects-main").hide();
-  		$(this).show();
-  	});
+  	// $("#" + div_name).addEventListener('click', function() {
+  	// 	$("#projects-main").hide();
+  	// 	$(this).show();
+  	// });
   	$("#" + div_name).hide();
 };
 
@@ -150,17 +150,20 @@ function addProjectDiv(projectName) {
     				  </tr>\
   					</table>\
   				  </div>';
+  				  console.log("got here");
   	$("#projects-main").after(html);
-  	$("#" + div_name).addEventListener('click', function() {
-  		$("#projects-main").hide();
-  		$(this).show();
-  	});
+  	console.log("got here");
+  	// $("#" + div_name).addEventListener('click', function() {
+  	// 	$("#projects-main").hide();
+  	// 	$(this).show();
+  	// });
   	$("#" + div_name).hide();
+  	console.log($("#" + div_name));
 };
 
 function showProjectDiv() {
 	// console.log("got here");
 	// console.log($("#" + projectSlug));
 	$("#projects-main").hide();
-	$(this).show();
+	// $(this).show();
 };
