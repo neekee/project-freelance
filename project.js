@@ -86,9 +86,8 @@ function addProjectDiv(projectName) {
   	$("#" + div_name).hide();
 };
 
-function showProjectDiv() {
-	// console.log("got here");
-	// console.log($("#" + projectSlug));
+function showProjectDiv(projectSlug) {
+	console.log(projectSlug);
 	$("#projects-main").hide();
-	$(this).show();
+	$("#" + projectSlug).show();
 };
