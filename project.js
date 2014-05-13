@@ -30,7 +30,7 @@ function addProject(textboxID) {
 	var lastProject = $(".project").last()
 	var project_slug = text.replace(/\s+/g, '').toLowerCase();
 	console.log(project_slug);
-	var string = "<p><a class=\"project\" href=\"javascript:void(0)\" onclick=\"showProjectDiv('" + project_slug + "');\">" + text + "</a></p>";
+	var string = "<br><br><a class=\"project\" href=\"javascript:void(0)\" onclick=\"showProjectDiv('" + project_slug + "');\">" + text + "</a>";
 	lastProject.after(string);
 	textBox.value = "";
 	addProjectDiv(text);
