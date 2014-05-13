@@ -22,6 +22,7 @@ $(function() {
 });
 
 function addProject(textboxID) {
+	console.log("wait what");
 	var textBox = document.getElementById(textboxID);
 	var text = textBox.value;
 	if (text == "") {
@@ -37,6 +38,7 @@ function addProject(textboxID) {
 }
 
 function addProjectDiv(projectName) {
+	console.log("the fuck");
 	var div_name = "project-" + projectName.replace(/\s+/g, '').toLowerCase();
 	var html =  '<div id="' + div_name + '" visible="hidden">\
   				  <div><h1>Project: ' + projectName + '</h1></div>\
