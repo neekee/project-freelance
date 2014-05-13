@@ -90,6 +90,27 @@ $(function () {
         }
     });
 
+    task_tab.on("keydown", ".tasks-add-field", function(evt) {
+        if(evt.which == 13) {
+            var div = $(this).closest("div");
+            var textInput = $(this);
+            var text = textInput.val();
+            if (text.length === 0) {
+                flashBorder(textInput);
+            }
+            else {
+                textInput.val("");
+                var putTasksHere = div.find(".task-list");
+                putTasksHere
+                    .append($("<tr>").addClass("task-entry")
+                        .append($("<td>")
+                            .append($("<input>").attr("type","checkbox").addClass("task-checkbox"))
+                            .append($("<span>").addClass("task-text").text(text))
+                            .append($("<span>").addClass("task-close ui-icon ui-icon-close"))));
+            }
+        }
+    });
+
     /* expand */
     task_tab.on("click", "table.task-table.closed", function() {
         var content = $(this).find("div.task-container");
