@@ -19,6 +19,12 @@ $(function() {
 		$("#saved").html("Saved!");
 	});
 
+	$("#tabs-projects").tabs({
+		beforeLoad: function(event, ui) {
+			showProjectList();
+		}
+	});
+
 });
 
 function addProject(textboxID) {
@@ -41,7 +47,7 @@ function addProjectDiv(projectName) {
 	var string = "<br><br><a class=\"project\" href=\"javascript:void(0)\" onclick=\"showProjectDiv('" + project_slug + "');\">" + projectName + "</a>";
 	lastProject.after(string);
 
-	var html =  '<div id="' + div_name + '">\
+	var html =  '<div id="' + div_name + '" class="project-div">\
   				  <div><h1>Project: ' + projectName + '</h1></div>\
   				    <table cellpadding="50px">\
     				  <tr>\
@@ -86,11 +92,22 @@ function addProjectDiv(projectName) {
   	// 	$("#projects-main").hide();
   	// 	$(this).show();
   	// });
+	console.log($("#") + div_name);
   	$("#" + div_name).hide();
 };
 
 function showProjectDiv(projectSlug) {
 	console.log(projectSlug);
 	$("#projects-main").hide();
-	$("#" + projectSlug).show();
+	console.log($("#project-"));
+	$("#project-" + projectSlug).show();
+	console.log("got here");
 };
+
+function showProjectList() {
+	var all_projects = document.getElementsByClass('project-div');
+	for (var i=0; i<=all_projects.length(); i++) {
+		all_projects[i].hide();
+	}
+	$("#projects-main").show();
+}
