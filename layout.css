@@ -21,6 +21,20 @@ div.task-content {
     padding-bottom: 10px;
 }
 
+span.task-text, span.task-close {
+    display: inline-block;
+}
+
+span.task-text {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+span.task-close {
+    visibility: hidden;
+    background-image: url("external_css/flick/images/ui-icons_666666_256x240.png") !important;
+}
+
 input#newprojectname, input#newfoldername, input.tasks-add-field, input.compose-to, input.compose-subject {
     background-color: white !important;
     background-image: none !important;
