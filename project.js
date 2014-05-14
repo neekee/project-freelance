@@ -105,9 +105,11 @@ function showProjectDiv(projectSlug) {
 };
 
 function showProjectList() {
-	var all_projects = document.getElementsByClass('project-div');
-	for (var i=0; i<=all_projects.length(); i++) {
-		all_projects[i].hide();
-	}
-	$("#projects-main").show();
-}
+
+ var all_projects = document.getElementsByClassName('project-div');
+ 	for (var i=0; i<all_projects.length; i++) {
+    //all_projects[i].hide();
+     	all_projects[i].style.display = 'none';
+ 	}
+ 	$("#projects-main").show();
+};
