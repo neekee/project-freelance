@@ -70,7 +70,7 @@ function addProjectDiv(projectName) {
       					<td align="left">\
         				  <div id="draft-list" width="300" border="2px">\
           					<h2>Older drafts</h2>'
-          					  + "No drafts yet" + 
+          					  + "No drafts yet" 
           					  //<div>Draft 3</div>
           					  //<div>Draft 2</div>
           					  //<div>Draft 1</div>
